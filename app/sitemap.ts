@@ -3,7 +3,7 @@ import { tools } from "@/data/tools";
 import { categories } from "@/data/categories";
 import { blogPosts } from "@/data/blog";
 
-const BASE_URL = "https://toolverse.app";
+const BASE_URL = "https://toolverse-steel.vercel.app";
 
 export default function sitemap(): MetadataRoute.Sitemap {
     const staticRoutes: MetadataRoute.Sitemap = [

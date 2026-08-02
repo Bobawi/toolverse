@@ -3,7 +3,7 @@
 import { useState, useMemo } from "react";
 
 export default function MarkdownEditor() {
-    const [markdown, setMarkdown] = useState("# Hello ToolVerse!\n\nStart typing markdown here...\n\n- **Bold**\n- *Italic*\n- `Code`\n- [Links](https://toolverse.app)");
+    const [markdown, setMarkdown] = useState("# Hello ToolVerse!\n\nStart typing markdown here...\n\n- **Bold**\n- *Italic*\n- `Code`\n- [Links](https://toolverse-steel.vercel.app)");
 
     const html = useMemo(() => {
         const h = markdown

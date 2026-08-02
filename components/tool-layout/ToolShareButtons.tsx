@@ -1,12 +1,14 @@
 "use client";
 
+import { SITE_URL } from "@/lib/site";
+
 interface ToolShareButtonsProps {
     title: string;
     slug: string;
 }
 
 export default function ToolShareButtons({ title, slug }: ToolShareButtonsProps) {
-    const url = `https://toolverse.app/tools/${slug}`;
+    const url = `${SITE_URL}/tools/${slug}`;
     const encodedUrl = encodeURIComponent(url);
     const encodedTitle = encodeURIComponent(title);
 

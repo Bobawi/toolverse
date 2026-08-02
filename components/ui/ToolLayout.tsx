@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ReactNode } from "react";
 import ToolShareButtons from "@/components/tool-layout/ToolShareButtons";
+import { SITE_URL } from "@/lib/site";
 
 interface ToolLayoutProps {
     name: string;
@@ -27,19 +28,19 @@ export default function ToolLayout({
                 "@type": "ListItem",
                 position: 1,
                 name: "Home",
-                item: "https://toolverse.app/",
+                item: `${SITE_URL}/`,
             },
             {
                 "@type": "ListItem",
                 position: 2,
                 name: "Tools",
-                item: "https://toolverse.app/tools",
+                item: `${SITE_URL}/tools`,
             },
             {
                 "@type": "ListItem",
                 position: 3,
                 name: name,
-                item: `https://toolverse.app/tools/${slug}`,
+                item: `${SITE_URL}/tools/${slug}`,
             },
         ],
     };

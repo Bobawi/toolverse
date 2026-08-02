@@ -5,6 +5,7 @@ import Link from "next/link";
 import { blogPosts, getBlogPostBySlug, getRelatedBlogPosts } from "@/data/blog";
 import BlogArticle from "@/components/blog/BlogArticle";
 import BlogCard from "@/components/blog/BlogCard";
+import { SITE_URL } from "@/lib/site";
 
 export function generateStaticParams() {
     return blogPosts.map((post) => ({ slug: post.slug }));
@@ -23,13 +24,13 @@ export async function generateMetadata({
         title: post.seo?.title ?? `${post.title} | ToolVerse Blog`,
         description: post.seo?.description ?? post.description,
         alternates: {
-            canonical: `https://toolverse.app/blog/${post.slug}`,
+            canonical: `${SITE_URL}/blog/${post.slug}`,
         },
         openGraph: {
             title: post.seo?.title ?? post.title,
             description: post.seo?.description ?? post.description,
             type: "article",
-            url: `https://toolverse.app/blog/${post.slug}`,
+            url: `${SITE_URL}/blog/${post.slug}`,
             publishedTime: post.date,
             tags: post.tags,
         },
@@ -62,16 +63,16 @@ export default function BlogPostPage({
         author: {
             "@type": "Organization",
             name: "ToolVerse",
-            url: "https://toolverse.app",
+            url: SITE_URL,
         },
         publisher: {
             "@type": "Organization",
             name: "ToolVerse",
-            url: "https://toolverse.app",
+            url: SITE_URL,
         },
         mainEntityOfPage: {
             "@type": "WebPage",
-            "@id": `https://toolverse.app/blog/${post.slug}`,
+            "@id": `${SITE_URL}/blog/${post.slug}`,
         },
         keywords: post.tags.join(", "),
     };

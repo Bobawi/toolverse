@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { categories, getCategoryBySlug } from "@/data/categories";
 import { getToolsByCategory } from "@/data/tools";
 import ToolCard from "@/components/tools/ToolCard";
+import { SITE_URL } from "@/lib/site";
 
 export function generateStaticParams() {
     return categories.map((cat) => ({ slug: cat.slug }));
@@ -43,13 +44,13 @@ export default async function CategoryPage({
         "@type": "CollectionPage",
         name: `${category.name} Tools`,
         description: `Free online ${category.name.toLowerCase()} tools collection.`,
-        url: `https://toolverse.app/categories/${slug}`,
+        url: `${SITE_URL}/categories/${slug}`,
         mainEntity: {
             "@type": "ItemList",
             itemListElement: tools.map((tool, index) => ({
                 "@type": "ListItem",
                 position: index + 1,
-                url: `https://toolverse.app/tools/${tool.slug}`,
+                url: `${SITE_URL}/tools/${tool.slug}`,
             })),
         },
     };

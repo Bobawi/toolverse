@@ -100,15 +100,21 @@ None are required. If you later add external services, add them in *Settings →
 
 ---
 
+## 🚀 Live
+
+- **Production:** https://toolverse-steel.vercel.app
+- **GitHub:** https://github.com/Bobawi/toolverse
+- **Vercel Dashboard:** https://vercel.com/httpsthegamekesugcom/toolverse
+
 ## 📊 Post-Launch Checklist
 
-### 1. Analytics (uncomment in `app/layout.tsx`)
-- [ ] **Google Analytics 4** — Create a GA4 property, copy the Measurement ID (`G-XXXXXXX`), and replace it in the placeholder script.
-- [ ] **Microsoft Clarity** — Create a project, copy the Project ID, and replace it in the placeholder script.
+### 1. Analytics (in `app/layout.tsx`)
+- [x] **Google Analytics 4** — Active (`G-Z3D2TSGYJ7`)
+- [ ] **Microsoft Clarity** — Create a project, copy the Project ID, and replace `XXXXXXXX` in the placeholder script.
 
 ### 2. Google Search Console
 - [ ] Verify your domain (DNS TXT record or HTML tag).
-- [ ] Submit your **sitemap**: `https://yourdomain.com/sitemap.xml`
+- [ ] Submit your **sitemap**: `https://toolverse-steel.vercel.app/sitemap.xml`
 - [ ] Request indexing for key pages.
 
 ### 3. Bing Webmaster Tools

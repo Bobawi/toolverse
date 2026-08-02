@@ -24,7 +24,7 @@ export default function Home() {
           <div className="mx-auto max-w-3xl text-center">
             <div className="mb-6 inline-flex items-center gap-1.5 rounded-full border border-border bg-background/50 px-3 py-1 text-xs font-medium text-muted backdrop-blur-sm">
               <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-              18+ Free Online Tools
+              41+ Free Online Tools
             </div>
             <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
               Free Online{" "}

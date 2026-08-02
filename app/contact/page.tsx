@@ -12,7 +12,7 @@ const contactData = {
     "@context": "https://schema.org",
     "@type": "ContactPage",
     name: "Contact ToolVerse",
-    url: "https://toolverse.app/contact",
+    url: "https://toolverse-steel.vercel.app/contact",
     description:
         "Contact the ToolVerse team for feedback, feature requests, or questions.",
 };

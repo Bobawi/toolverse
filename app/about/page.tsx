@@ -11,7 +11,7 @@ const aboutData = {
     "@context": "https://schema.org",
     "@type": "AboutPage",
     name: "About ToolVerse",
-    url: "https://toolverse.app/about",
+    url: "https://toolverse-steel.vercel.app/about",
     description:
         "ToolVerse provides free, fast, and privacy-friendly online tools for images, PDFs, developers, text, AI, and everyday tasks.",
 };

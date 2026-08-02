@@ -1,8 +1,15 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import { SITE_URL } from "@/lib/site";
 import "./globals.css";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#0f172a",
+};
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -60,7 +67,7 @@ export const metadata: Metadata = {
     "calculator",
     "online calculator",
   ],
-  authors: [{ name: "ToolVerse", url: "https://toolverse.app" }],
+  authors: [{ name: "ToolVerse", url: SITE_URL }],
   creator: "ToolVerse",
   publisher: "ToolVerse",
   applicationName: "ToolVerse",
@@ -85,7 +92,7 @@ export const metadata: Metadata = {
     description:
       "Free online tools for images, PDFs, developers, text, AI, and everyday tasks. Fast, secure, and privacy-friendly.",
     type: "website",
-    url: "https://toolverse.app",
+    url: SITE_URL,
     siteName: "ToolVerse",
     locale: "en_US",
     images: [
@@ -116,9 +123,10 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: "https://toolverse.app",
+    canonical: SITE_URL,
   },
-  metadataBase: new URL("https://toolverse.app"),
+  metadataBase: new URL(SITE_URL),
+  manifest: "/manifest.webmanifest",
 };
 
 export default function RootLayout({
@@ -132,31 +140,38 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <head>
-        {/* Google Analytics — replace G-XXXXXXXXXX with your Measurement ID after deployment */}
-        {/* <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX" />
+        {/* Google Site Verification */}
+        <meta
+          name="google-site-verification"
+          content="4yGTyFSvFiMqYJz6BpZ-v4olh82Msz6ITaM6e9qKPac"
+        />
+
+        {/* Google Analytics (GA4) */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z3D2TSGYJ7" />
         <script
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
-              gtag('config', 'G-XXXXXXXXXX');
+              gtag('config', 'G-Z3D2TSGYJ7');
             `,
           }}
-        /> */}
+        />
 
-        {/* Microsoft Clarity — replace XXXXXXXX with your Project ID after deployment */}
-        {/* <script
+        {/* Microsoft Clarity — session recording & heatmaps */}
+        <script
+          type="text/javascript"
           dangerouslySetInnerHTML={{
             __html: `
               (function(c,l,a,r,i,t,y){
                 c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
                 t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
                 y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-              })(window, document, "clarity", "script", "XXXXXXXX");
+              })(window, document, "clarity", "script", "xvu8nfhcfq");
             `,
           }}
-        /> */}
+        />
 
         <script
           type="application/ld+json"
@@ -165,14 +180,14 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Organization",
               name: "ToolVerse",
-              url: "https://toolverse.app",
-              logo: "https://toolverse.app/favicon.svg",
+              url: SITE_URL,
+              logo: `${SITE_URL}/favicon.svg`,
               description:
                 "Free online tools for images, PDFs, developers, text, AI, and everyday tasks.",
               contactPoint: {
                 "@type": "ContactPoint",
                 contactType: "customer support",
-                url: "https://toolverse.app/contact",
+                url: `${SITE_URL}/contact`,
               },
               sameAs: [],
             }),

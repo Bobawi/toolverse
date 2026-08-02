@@ -47,6 +47,7 @@ import ImageToPdf from "./image-to-pdf";
 import UrlEncoder from "./url-encoder";
 import JwtDecoder from "./jwt-decoder";
 import PasswordStrength from "./password-strength";
+import { SITE_URL } from "@/lib/site";
 
 const toolComponents: Record<string, React.ComponentType> = {
     "qr-generator": QRGenerator,
@@ -86,7 +87,7 @@ const toolComponents: Record<string, React.ComponentType> = {
     "split-pdf": SplitPdf,
     "compress-pdf": CompressPdf,
     "pdf-to-image": PdfToImage,
-"image-to-pdf": ImageToPdf,
+    "image-to-pdf": ImageToPdf,
     "url-encoder": UrlEncoder,
     "jwt-decoder": JwtDecoder,
     "password-strength": PasswordStrength,
@@ -111,14 +112,14 @@ export async function generateMetadata({
             tool.seo?.description ??
             `${tool.name} - ${tool.description} Free, fast, no sign-up required.`,
         alternates: {
-            canonical: `https://toolverse.app/tools/${tool.slug}`,
+            canonical: `${SITE_URL}/tools/${tool.slug}`,
         },
         openGraph: {
             title: tool.seo?.title ?? `${tool.name} - Free Online Tool`,
             description:
                 tool.seo?.description ?? `${tool.description} No sign-up required.`,
             type: "website",
-            url: `https://toolverse.app/tools/${tool.slug}`,
+            url: `${SITE_URL}/tools/${tool.slug}`,
         },
         twitter: {
             card: "summary",
