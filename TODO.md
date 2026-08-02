@@ -127,13 +127,13 @@
 
 ---
 
-## 🟡 Milestone 7: Launch — 15% (IN PROGRESS)
+## 🟡 Milestone 7: Launch — 71% (IN PROGRESS)
 
-- [ ] Domain + Hosting (Vercel)
-- [x] Google Search Console (`4yGTyFSvFiMqYJz6BpZ-v4olh82Msz6ITaM6e9qKPac` — meta tag added to `layout.tsx`)
-- [ ] Google Analytics
+- [x] Domain + Hosting (Vercel — auto-deploy via GitHub)
+- [x] Google Search Console (✅ **VALIDATED** — meta tag `4yGTyFSvFiMqYJz6BpZ-v4olh82Msz6ITaM6e9qKPac`)
+- [x] Google Analytics (GA4 `G-Z3D2TSGYJ7`)
 - [x] Microsoft Clarity (`xvu8nfhcfq` — added to `layout.tsx`)
-- [ ] AdSense application
+- [ ] AdSense application (awaiting traffic)
 - [ ] Performance Optimization (Lighthouse 95+)
 - [x] Security headers
 
@@ -149,7 +149,7 @@
 | Blog + Traffic | ✅ 100% (30/30 posts) |
 | Tool Template | ✅ 100% |
 | Search Upgrade | ✅ 100% |
-| Launch | 🟡 15% |
+| Launch | 🟡 71% |
 
 **🎯 Real State: 41 tools | 105 static pages | ~95% mn Version 1.0**
 
