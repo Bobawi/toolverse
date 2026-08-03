@@ -41,40 +41,36 @@ export default function ToolsPage() {
 
       <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-12">
         {/* Category filter */}
-        <ScrollReveal type="up" delay={150}>
-          <div className="mb-8 flex flex-wrap gap-2">
+        <div className="mb-8 flex flex-wrap gap-2">
+          <button
+            onClick={() => setActiveCategory(null)}
+            className={`rounded-lg px-3 py-1.5 text-xs font-medium transition-all ${!activeCategory
+              ? "bg-primary text-white shadow-sm"
+              : "border border-border bg-background text-muted hover:text-foreground hover:border-primary/30"
+              }`}
+          >
+            All
+          </button>
+          {categories.map((cat) => (
             <button
-              onClick={() => setActiveCategory(null)}
-              className={`rounded-lg px-3 py-1.5 text-xs font-medium transition-all ${!activeCategory
+              key={cat.slug}
+              onClick={() => setActiveCategory(cat.slug)}
+              className={`inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-medium transition-all ${activeCategory === cat.slug
                 ? "bg-primary text-white shadow-sm"
                 : "border border-border bg-background text-muted hover:text-foreground hover:border-primary/30"
                 }`}
             >
-              All
+              <span>{cat.icon}</span>
+              {cat.name}
             </button>
-            {categories.map((cat) => (
-              <button
-                key={cat.slug}
-                onClick={() => setActiveCategory(cat.slug)}
-                className={`inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-medium transition-all ${activeCategory === cat.slug
-                  ? "bg-primary text-white shadow-sm"
-                  : "border border-border bg-background text-muted hover:text-foreground hover:border-primary/30"
-                  }`}
-              >
-                <span>{cat.icon}</span>
-                {cat.name}
-              </button>
-            ))}
-          </div>
-        </ScrollReveal>
+          ))}
+        </div>
 
         {/* Tools grid */}
         {filteredTools.length > 0 ? (
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {filteredTools.map((tool, i) => (
-              <ScrollReveal key={tool.slug} type="up" index={i} stagger={60}>
-                <ToolCard tool={tool} />
-              </ScrollReveal>
+            {filteredTools.map((tool) => (
+              <ToolCard key={tool.slug} tool={tool} />
             ))}
           </div>
         ) : (
@@ -86,3 +82,4 @@ export default function ToolsPage() {
     </div>
   );
 }
+

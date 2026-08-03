@@ -131,7 +131,7 @@ body {
 /* Content-visibility: render only what's visible → faster LCP */
 section {
   content-visibility: auto;
-  contain-intrinsic-size: 1px 600px;
+  contain-intrinsic-size: auto 600px;
 }
 
 /* Custom scrollbar */
@@ -187,6 +187,12 @@ section {
   background-clip: text;
   color: transparent;
   animation: gradient 8s ease infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gradient-text {
+    animation: none;
+  }
 }
 
 /* Grid pattern background */

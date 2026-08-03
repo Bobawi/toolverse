@@ -152,14 +152,14 @@ export default function RootLayout({
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://www.clarity.ms" />
 
-        {/* Google Analytics (GA4) — deferred via requestIdleCallback */}
+        {/* Google Analytics (GA4) — loaded on idle, never blocks render */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-Z3D2TSGYJ7"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
         <Script
           id="ga4-init"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];
@@ -170,10 +170,10 @@ export default function RootLayout({
           }}
         />
 
-        {/* Microsoft Clarity — session recording & heatmaps (deferred) */}
+        {/* Microsoft Clarity — session recording & heatmaps (idle deferred) */}
         <Script
           id="clarity-init"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
           dangerouslySetInnerHTML={{
             __html: `
               (function(c,l,a,r,i,t,y){

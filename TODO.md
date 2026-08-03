@@ -1,38 +1,32 @@
-# ToolVerse Redesign & Performance TODO
+# ToolVerse — Performance Optimization (Phase 2)
 
-## ✅ Phase 1: Performance Fixes
-- [x] Fix layout.tsx: Defer GA4/Clarity via requestIdleCallback
-- [x] Fix Footer CLS: reserve space (minHeight + contain)
-- [x] Optimize globals.css
+Goal: Lighthouse Performance 95+ (SEO 100, A11y 95+, Best Practices 100)
 
-## ✅ Phase 2: Design Redesign
-- [x] Update globals.css with modern design tokens
-- [x] Redesign Hero section (animated, stats, modern)
-- [x] Redesign ToolCard (glassmorphism, glow, hover effects, shimmer, wiggle)
-- [x] Redesign CategoryCard (hover lift, glow effects, shimmer, wiggle)
-- [x] Redesign BlogCard (modern, card-glow class, shimmer, wiggle)
-- [x] Update homepage layout (New Hero, Stats, CTA section, scroll reveal, animated counters)
-- [x] Update Tools page (gradient header, category filters, scroll reveal)
-- [x] Update Blog page (gradient header, modern cards, scroll reveal)
-- [x] Update Navbar (gradient logo, underline animation)
-- [x] Update Footer (minHeight, gradient logo, reduced padding)
+Current baseline: Performance 32, LCP 6.3s, TBT 2260ms, CLS 0.321
 
-## ✅ Phase 3: Premium Animations
-- [x] globals.css: Added shimmer, pop-in, wiggle, pulse-glow, border-spin, float-slow, reveal classes
-- [x] New `ScrollReveal` component (IntersectionObserver, staggered by index, 4 types: up/left/right/scale)
-- [x] New `AnimatedCounter` component (counts from 0 → target on scroll with ease-out cubic)
-- [x] Homepage: stats → animated counters, all sections → scroll reveal, extra floating orbs, spinning rings, shimmer buttons
-- [x] Tools page: header + filter + cards → scroll reveal with stagger
-- [x] Blog page: header + cards + CTA → scroll reveal with stagger
-- [x] All cards: card-shimmer overlay + wiggle-target icon on hover
-- [x] All buttons: btn-shimmer sweep on hover
-- [x] Extra decorative orbs and spinning border rings in Hero
-- [x] Reduced motion support (prefers-reduced-motion: reduce)
+## Steps
 
-## ✅ Phase 4: Launch
-- [x] Run `npm run build` to verify ✅ (94 pages, 0 errors)
-- [ ] Run Lighthouse
-- [x] Deploy to Vercel (auto-deploy via GitHub push ✅)
-- [x] Submit sitemap.xml (fixed: stable lastmod dates, deterministic output)
-- [ ] Request indexing
-- [ ] Start traffic (Reddit, X, LinkedIn)
+- [x] Read all relevant files (home, tools, blog, layout, footer, scrollreveal, counter, globals.css)
+- [x] 1. Optimize `app/page.tsx` — remove ScrollReveal from hero (above-fold) + AnimatedCounter → static numbers; remove ScrollReveal wrappers from card grids
+- [x] 2. Optimize `app/tools/page.tsx` — remove ScrollReveal wrappers from card grid
+- [x] 3. Optimize `app/blog/page.tsx` — remove ScrollReveal wrappers from card grid
+- [x] 4. Optimize `components/ui/ScrollReveal.tsx` — reveal immediately if already in viewport; reduce JS cost
+- [x] 5. Optimize `app/layout.tsx` — defer GA4/Clarity to lazyOnload; reduce blocking
+- [x] 6. Optimize `globals.css` — reduce expensive blur/paint effects; keep content-visibility
+- [x] 7. Build & verify (next build) — ✅ 94 static pages generated, no errors
+- [ ] 8. Deploy & run Lighthouse check (needs deployment + live test)
+
+## Notes
+- Keep visual identity; remove only performance-blocking animation overhead.
+- Keep `content-visibility: auto` on sections for below-fold rendering.
+- Respect `prefers-reduced-motion`.
+
+## What Changed
+1. **Home hero**: removed ScrollReveal + AnimatedCounter → static numbers (LCP fix)
+2. **Tools grid**: removed ScrollReveal wrappers → direct ToolCard rendering
+3. **Blog grid**: removed ScrollReveal wrappers → direct BlogCard rendering
+4. **ScrollReveal**: SSR renders fully visible; only below-fold items animate; already-visible items reveal instantly
+5. **GA4 + Clarity**: switched to `lazyOnload` (no longer blocks main thread)
+6. **Footer**: removed `minHeight: 280px` (CLS fix)
+7. **CSS**: `contain-intrinsic-size: auto 600px` + reduced-motion guard for gradient text
+
