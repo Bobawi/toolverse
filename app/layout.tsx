@@ -1,9 +1,9 @@
 import type { Metadata, Viewport } from "next";
-import Script from "next/script";
 import { Geist, Geist_Mono } from "next/font/google";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import ThemeProvider from "@/components/ThemeProvider";
+import AnalyticsLoader from "@/components/AnalyticsLoader";
 import { SITE_URL } from "@/lib/site";
 import "./globals.css";
 
@@ -148,42 +148,9 @@ export default function RootLayout({
           content="4yGTyFSvFiMqYJz6BpZ-v4olh82Msz6ITaM6e9qKPac"
         />
 
-        {/* Preconnect for faster analytics/analytics third-party */}
+        {/* Preconnect for analytics — actual script loads on first interaction (AnalyticsLoader) */}
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://www.clarity.ms" />
-
-        {/* Google Analytics (GA4) — loaded on idle, never blocks render */}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-Z3D2TSGYJ7"
-          strategy="lazyOnload"
-        />
-        <Script
-          id="ga4-init"
-          strategy="lazyOnload"
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-Z3D2TSGYJ7', { 'transport_type': 'beacon' });
-            `,
-          }}
-        />
-
-        {/* Microsoft Clarity — session recording & heatmaps (idle deferred) */}
-        <Script
-          id="clarity-init"
-          strategy="lazyOnload"
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function(c,l,a,r,i,t,y){
-                c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-                t=l.createElement(r);t.async=1;t.defer=1;t.src="https://www.clarity.ms/tag/"+i;
-                y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-              })(window, document, "clarity", "script", "xvu8nfhcfq");
-            `,
-          }}
-        />
 
         <script
           type="application/ld+json"
@@ -212,6 +179,7 @@ export default function RootLayout({
           <main className="flex-1">{children}</main>
           <Footer />
         </ThemeProvider>
+        <AnalyticsLoader />
       </body>
     </html>
   );
