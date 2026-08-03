@@ -20,7 +20,7 @@
 ## ✅ Phase 3: Launch
 - [x] Run `npm run build` to verify ✅ (94 pages, 0 errors)
 - [ ] Run Lighthouse
-- [ ] Deploy to Vercel
-- [ ] Submit sitemap.xml
+- [x] Deploy to Vercel (auto-deploy via GitHub push ✅)
+- [x] Submit sitemap.xml (fixed: stable lastmod dates, deterministic output)
 - [ ] Request indexing
 - [ ] Start traffic (Reddit, X, LinkedIn)
