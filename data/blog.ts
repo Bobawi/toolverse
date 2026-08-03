@@ -1272,7 +1272,7 @@ export const blogPosts: BlogPost[] = [
                     "A free online Base64 encoder/decoder handles both directions instantly.",
                 ],
                 toolCta: {
-                    slug: "base64-tool",
+                    slug: "base64-encoder",
                     text: "Encode or decode Base64 online for free with ToolVerse",
                 },
             },

@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect, useMemo, useCallback } from "react";
 import Link from "next/link";
-import { tools } from "@/data/tools";
+import { searchIndex } from "@/data/search-index";
 
 interface SearchResult {
     slug: string;
@@ -40,7 +40,7 @@ export default function SearchTools() {
     const results = useMemo<SearchResult[]>(() => {
         const q = query.trim().toLowerCase();
         if (!q) return [];
-        return tools
+        return searchIndex
             .filter(
                 (t) =>
                     t.name.toLowerCase().includes(q) ||
@@ -53,7 +53,7 @@ export default function SearchTools() {
     const totalMatches = useMemo(() => {
         const q = query.trim().toLowerCase();
         if (!q) return 0;
-        return tools.filter(
+        return searchIndex.filter(
             (t) =>
                 t.name.toLowerCase().includes(q) ||
                 t.description.toLowerCase().includes(q) ||
@@ -189,16 +189,16 @@ export default function SearchTools() {
                                     <Link
                                         key={tool.slug}
                                         href={`/tools/${tool.slug}`}
+                                        prefetch={false}
                                         onClick={closeAndReset}
                                         onMouseEnter={() => setActiveIndex(index)}
                                         data-result-index={index}
                                         role="option"
                                         aria-selected={activeIndex === index}
-                                        className={`flex items-center gap-3 px-4 py-2.5 transition-colors ${
-                                            activeIndex === index
-                                                ? "bg-primary/10"
-                                                : "hover:bg-muted/10"
-                                        }`}
+                                        className={`flex items-center gap-3 px-4 py-2.5 transition-colors ${activeIndex === index
+                                            ? "bg-primary/10"
+                                            : "hover:bg-muted/10"
+                                            }`}
                                     >
                                         <span className="text-lg">{tool.icon}</span>
                                         <div className="min-w-0 flex-1">

@@ -1,96 +1,59 @@
 import { notFound } from "next/navigation";
 import { use } from "react";
+import dynamic from "next/dynamic";
 import type { Metadata } from "next";
 import { tools, getToolBySlug } from "@/data/tools";
 import ToolLayout from "@/components/ui/ToolLayout";
 import ToolFAQ from "@/components/tool-layout/ToolFAQ";
 import ToolHowToUse from "@/components/tool-layout/ToolHowToUse";
 import ToolRelatedTools from "@/components/tool-layout/ToolRelatedTools";
-import QRGenerator from "./qr-generator";
-import PasswordGenerator from "./password-generator";
-import JsonFormatter from "./json-formatter";
-import AgeCalculator from "./age-calculator";
-import LoanCalculator from "./loan-calculator";
-import CharacterCounter from "./character-counter";
-import Base64Tool from "./base64-tool";
-import CaseConverter from "./case-converter";
-import ColorConverter from "./color-converter";
-import HashGenerator from "./hash-generator";
-import TextToSpeech from "./text-to-speech";
-import UnitConverter from "./unit-converter";
-import MarkdownEditor from "./markdown-editor";
-import UuidGenerator from "./uuid-generator";
-import ImageCompressor from "./image-compressor";
-import ImageResizer from "./image-resizer";
-import ImageCropper from "./image-cropper";
-import HtmlEncoder from "./html-encoder";
-import DateCalculator from "./date-calculator";
-import SlugGenerator from "./slug-generator";
-import LoremIpsum from "./lorem-ipsum";
-import BmiCalculator from "./bmi-calculator";
-import PercentageCalculator from "./percentage-calculator";
-import VatCalculator from "./vat-calculator";
-import JpgToPng from "./jpg-to-png";
-import PngToJpg from "./png-to-jpg";
-import PngToWebp from "./png-to-webp";
-import JpgToWebp from "./jpg-to-webp";
-import WebpToPng from "./webp-to-png";
-import WebpToJpg from "./webp-to-jpg";
-import ImageRotator from "./image-rotator";
-import ImageFlipper from "./image-flipper";
-import ImageToBase64 from "./image-to-base64";
-import MergePdf from "./merge-pdf";
-import SplitPdf from "./split-pdf";
-import CompressPdf from "./compress-pdf";
-import PdfToImage from "./pdf-to-image";
-import ImageToPdf from "./image-to-pdf";
-import UrlEncoder from "./url-encoder";
-import JwtDecoder from "./jwt-decoder";
-import PasswordStrength from "./password-strength";
 import { SITE_URL } from "@/lib/site";
 
+// Lazy-load each tool component so heavy dependencies (pdf-lib,
+// QR lib, etc.) are code-split into per-tool chunks instead of
+// being bundled into the shared chunk loaded on every page.
 const toolComponents: Record<string, React.ComponentType> = {
-    "qr-generator": QRGenerator,
-    "password-generator": PasswordGenerator,
-    "json-formatter": JsonFormatter,
-    "age-calculator": AgeCalculator,
-    "loan-calculator": LoanCalculator,
-    "character-counter": CharacterCounter,
-    "base64-encoder": Base64Tool,
-    "case-converter": CaseConverter,
-    "color-converter": ColorConverter,
-    "hash-generator": HashGenerator,
-    "text-to-speech": TextToSpeech,
-    "unit-converter": UnitConverter,
-    "markdown-editor": MarkdownEditor,
-    "uuid-generator": UuidGenerator,
-    "image-compressor": ImageCompressor,
-    "image-resizer": ImageResizer,
-    "image-cropper": ImageCropper,
-    "html-encoder": HtmlEncoder,
-    "date-calculator": DateCalculator,
-    "slug-generator": SlugGenerator,
-    "lorem-ipsum": LoremIpsum,
-    "bmi-calculator": BmiCalculator,
-    "percentage-calculator": PercentageCalculator,
-    "vat-calculator": VatCalculator,
-    "jpg-to-png": JpgToPng,
-    "png-to-jpg": PngToJpg,
-    "png-to-webp": PngToWebp,
-    "jpg-to-webp": JpgToWebp,
-    "webp-to-png": WebpToPng,
-    "webp-to-jpg": WebpToJpg,
-    "image-rotator": ImageRotator,
-    "image-flipper": ImageFlipper,
-    "image-to-base64": ImageToBase64,
-    "merge-pdf": MergePdf,
-    "split-pdf": SplitPdf,
-    "compress-pdf": CompressPdf,
-    "pdf-to-image": PdfToImage,
-    "image-to-pdf": ImageToPdf,
-    "url-encoder": UrlEncoder,
-    "jwt-decoder": JwtDecoder,
-    "password-strength": PasswordStrength,
+    "qr-generator": dynamic(() => import("./qr-generator")),
+    "password-generator": dynamic(() => import("./password-generator")),
+    "json-formatter": dynamic(() => import("./json-formatter")),
+    "age-calculator": dynamic(() => import("./age-calculator")),
+    "loan-calculator": dynamic(() => import("./loan-calculator")),
+    "character-counter": dynamic(() => import("./character-counter")),
+    "base64-encoder": dynamic(() => import("./base64-tool")),
+    "case-converter": dynamic(() => import("./case-converter")),
+    "color-converter": dynamic(() => import("./color-converter")),
+    "hash-generator": dynamic(() => import("./hash-generator")),
+    "text-to-speech": dynamic(() => import("./text-to-speech")),
+    "unit-converter": dynamic(() => import("./unit-converter")),
+    "markdown-editor": dynamic(() => import("./markdown-editor")),
+    "uuid-generator": dynamic(() => import("./uuid-generator")),
+    "image-compressor": dynamic(() => import("./image-compressor")),
+    "image-resizer": dynamic(() => import("./image-resizer")),
+    "image-cropper": dynamic(() => import("./image-cropper")),
+    "html-encoder": dynamic(() => import("./html-encoder")),
+    "date-calculator": dynamic(() => import("./date-calculator")),
+    "slug-generator": dynamic(() => import("./slug-generator")),
+    "lorem-ipsum": dynamic(() => import("./lorem-ipsum")),
+    "bmi-calculator": dynamic(() => import("./bmi-calculator")),
+    "percentage-calculator": dynamic(() => import("./percentage-calculator")),
+    "vat-calculator": dynamic(() => import("./vat-calculator")),
+    "jpg-to-png": dynamic(() => import("./jpg-to-png")),
+    "png-to-jpg": dynamic(() => import("./png-to-jpg")),
+    "png-to-webp": dynamic(() => import("./png-to-webp")),
+    "jpg-to-webp": dynamic(() => import("./jpg-to-webp")),
+    "webp-to-png": dynamic(() => import("./webp-to-png")),
+    "webp-to-jpg": dynamic(() => import("./webp-to-jpg")),
+    "image-rotator": dynamic(() => import("./image-rotator")),
+    "image-flipper": dynamic(() => import("./image-flipper")),
+    "image-to-base64": dynamic(() => import("./image-to-base64")),
+    "merge-pdf": dynamic(() => import("./merge-pdf")),
+    "split-pdf": dynamic(() => import("./split-pdf")),
+    "compress-pdf": dynamic(() => import("./compress-pdf")),
+    "pdf-to-image": dynamic(() => import("./pdf-to-image")),
+    "image-to-pdf": dynamic(() => import("./image-to-pdf")),
+    "url-encoder": dynamic(() => import("./url-encoder")),
+    "jwt-decoder": dynamic(() => import("./jwt-decoder")),
+    "password-strength": dynamic(() => import("./password-strength")),
 };
 
 export function generateStaticParams() {

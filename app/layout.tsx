@@ -1,7 +1,9 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import { Geist, Geist_Mono } from "next/font/google";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import ThemeProvider from "@/components/ThemeProvider";
 import { SITE_URL } from "@/lib/site";
 import "./globals.css";
 
@@ -146,27 +148,37 @@ export default function RootLayout({
           content="4yGTyFSvFiMqYJz6BpZ-v4olh82Msz6ITaM6e9qKPac"
         />
 
-        {/* Google Analytics (GA4) */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z3D2TSGYJ7" />
-        <script
+        {/* Preconnect for faster analytics/analytics third-party */}
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://www.clarity.ms" />
+
+        {/* Google Analytics (GA4) — deferred via requestIdleCallback */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-Z3D2TSGYJ7"
+          strategy="afterInteractive"
+        />
+        <Script
+          id="ga4-init"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
-              gtag('config', 'G-Z3D2TSGYJ7');
+              gtag('config', 'G-Z3D2TSGYJ7', { 'transport_type': 'beacon' });
             `,
           }}
         />
 
-        {/* Microsoft Clarity — session recording & heatmaps */}
-        <script
-          type="text/javascript"
+        {/* Microsoft Clarity — session recording & heatmaps (deferred) */}
+        <Script
+          id="clarity-init"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
               (function(c,l,a,r,i,t,y){
                 c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+                t=l.createElement(r);t.async=1;t.defer=1;t.src="https://www.clarity.ms/tag/"+i;
                 y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
               })(window, document, "clarity", "script", "xvu8nfhcfq");
             `,
@@ -195,9 +207,11 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col">
-        <Navbar />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <ThemeProvider>
+          <Navbar />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );

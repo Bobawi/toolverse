@@ -40,4 +40,11 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-.vercel
+# build artifacts & logs
+build-check.txt
+build-output.txt
+lighthouse-*.json
+next-server.log
+next-start.log
+server.log
+*.log
