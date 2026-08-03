@@ -5,10 +5,10 @@ export default function BlogCard({ post }: { post: BlogPost }) {
     return (
         <Link
             href={`/blog/${post.slug}`}
-            className="card-glow group flex flex-col rounded-xl border border-border bg-background p-6 transition-all hover:-translate-y-0.5"
+            className="card-glow card-shimmer group flex flex-col rounded-xl border border-border bg-background p-6 transition-all hover:-translate-y-0.5"
         >
             <div className="mb-4 flex items-center gap-2">
-                <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-primary/20 to-secondary/20 text-lg">
+                <span className="wiggle-target flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-primary/20 to-secondary/20 text-lg">
                     {post.icon}
                 </span>
                 <span className="rounded-full border border-border px-2.5 py-0.5 text-xs font-medium text-muted">

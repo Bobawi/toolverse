@@ -9,11 +9,10 @@ export default function CategoryCard({ category }: CategoryCardProps) {
   return (
     <Link
       href={`/categories/${category.slug}`}
-      className="flex flex-col items-center gap-2 rounded-xl border border-border bg-background p-4 transition-all hover:border-primary/30 hover:shadow-sm"
+      className="card-glow card-shimmer group-wiggle flex flex-col items-center gap-2 rounded-xl border border-border bg-background p-4 transition-all hover:border-primary/30 hover:shadow-sm hover:-translate-y-0.5"
     >
-      <span className="text-2xl">{category.icon}</span>
+      <span className="wiggle-target text-2xl">{category.icon}</span>
       <span className="text-xs font-medium text-foreground">{category.name}</span>
     </Link>
   );
 }
-

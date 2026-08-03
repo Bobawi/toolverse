@@ -19,14 +19,14 @@ export default function ToolCard({ tool }: { tool: Tool }) {
         <Link
             href={`/tools/${tool.slug}`}
             prefetch={false}
-            className="card-glow group relative overflow-hidden rounded-xl border border-border bg-background p-5 transition-all hover:-translate-y-0.5"
+            className="card-glow card-shimmer group relative overflow-hidden rounded-xl border border-border bg-background p-5 transition-all hover:-translate-y-0.5"
         >
             {/* Gradient background on hover */}
             <div className={`absolute inset-0 bg-gradient-to-br ${gradient} opacity-0 transition-opacity duration-300 group-hover:opacity-100`} />
 
             <div className="relative flex items-start gap-4">
                 <div
-                    className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-lg text-xl transition-transform duration-300 group-hover:scale-110 ${tool.bgColor}`}
+                    className={`wiggle-target flex h-12 w-12 shrink-0 items-center justify-center rounded-lg text-xl transition-transform duration-300 group-hover:scale-110 ${tool.bgColor}`}
                 >
                     {tool.icon}
                 </div>
