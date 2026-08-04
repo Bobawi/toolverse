@@ -184,8 +184,8 @@ export default function QRGenerator() {
                         style={{ width: Math.min(size, 400) }}
                         className="h-auto"
                     />
-                    <p className="text-xs text-muted">
-                        Error correction: {ecLevel} • {size}px
+<p className="text-xs text-muted">
+                        Tolerance: {EC_OPTIONS.find(o => o.value === ecLevel)?.label} • {size}px
                     </p>
                 </div>
             )}
