@@ -2,8 +2,7 @@ import type { MetadataRoute } from "next";
 import { tools } from "@/data/tools";
 import { categories } from "@/data/categories";
 import { blogPosts } from "@/data/blog";
-
-const BASE_URL = "https://toolverse-steel.vercel.app";
+import { SITE_URL } from "@/lib/site";
 
 /**
  * Stable site-wide lastmod date (site launch date).
@@ -13,46 +12,55 @@ const BASE_URL = "https://toolverse-steel.vercel.app";
  */
 const SITE_LAUNCH_DATE = new Date("2026-07-01");
 
+/**
+ * Normalize a date to a stable YYYY-MM-DD string.
+ * This produces a clean, deterministic date for <lastmod> nodes.
+ */
+const toIsoDate = (date: Date | string): string => {
+    const d = typeof date === "string" ? new Date(date) : date;
+    return d.toISOString().split("T")[0];
+};
+
 export default function sitemap(): MetadataRoute.Sitemap {
     const staticRoutes: MetadataRoute.Sitemap = [
         {
-            url: BASE_URL,
+            url: SITE_URL,
             lastModified: SITE_LAUNCH_DATE,
             changeFrequency: "daily",
             priority: 1,
         },
         {
-            url: `${BASE_URL}/tools`,
+            url: `${SITE_URL}/tools`,
             lastModified: SITE_LAUNCH_DATE,
             changeFrequency: "daily",
             priority: 0.9,
         },
         {
-            url: `${BASE_URL}/blog`,
+            url: `${SITE_URL}/blog`,
             lastModified: SITE_LAUNCH_DATE,
             changeFrequency: "weekly",
             priority: 0.8,
         },
         {
-            url: `${BASE_URL}/about`,
+            url: `${SITE_URL}/about`,
             lastModified: SITE_LAUNCH_DATE,
             changeFrequency: "monthly",
             priority: 0.5,
         },
         {
-            url: `${BASE_URL}/contact`,
+            url: `${SITE_URL}/contact`,
             lastModified: SITE_LAUNCH_DATE,
             changeFrequency: "monthly",
             priority: 0.5,
         },
         {
-            url: `${BASE_URL}/privacy`,
+            url: `${SITE_URL}/privacy`,
             lastModified: SITE_LAUNCH_DATE,
             changeFrequency: "yearly",
             priority: 0.3,
         },
         {
-            url: `${BASE_URL}/terms`,
+            url: `${SITE_URL}/terms`,
             lastModified: SITE_LAUNCH_DATE,
             changeFrequency: "yearly",
             priority: 0.3,
@@ -60,26 +68,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ];
 
     const categoryRoutes: MetadataRoute.Sitemap = categories.map((cat) => ({
-        url: `${BASE_URL}/categories/${cat.slug}`,
+        url: `${SITE_URL}/categories/${cat.slug}`,
         lastModified: SITE_LAUNCH_DATE,
         changeFrequency: "weekly",
         priority: 0.8,
     }));
 
     const toolRoutes: MetadataRoute.Sitemap = tools.map((tool) => ({
-        url: `${BASE_URL}/tools/${tool.slug}`,
+        url: `${SITE_URL}/tools/${tool.slug}`,
         lastModified: SITE_LAUNCH_DATE,
         changeFrequency: "weekly",
         priority: 0.7,
     }));
 
     const blogRoutes: MetadataRoute.Sitemap = blogPosts.map((post) => ({
-        url: `${BASE_URL}/blog/${post.slug}`,
-        lastModified: new Date(post.date),
+        url: `${SITE_URL}/blog/${post.slug}`,
+        lastModified: toIsoDate(post.date),
         changeFrequency: "monthly",
         priority: 0.6,
     }));
 
     return [...staticRoutes, ...categoryRoutes, ...toolRoutes, ...blogRoutes];
 }
-

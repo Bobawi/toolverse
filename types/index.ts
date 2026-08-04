@@ -24,6 +24,8 @@ export interface Tool {
     color: string;
     bgColor: string;
     popular?: boolean;
+    badge?: "popular" | "new" | "trending";
+    features?: string[];
     seo?: SeoData;
     faq?: FaqItem[];
     howToUse?: HowToStep[];

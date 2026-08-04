@@ -1,32 +1,57 @@
-# ToolVerse — Performance Optimization (Phase 2)
+# ToolVerse — Implementation TODO
 
-Goal: Lighthouse Performance 95+ (SEO 100, A11y 95+, Best Practices 100)
+## 🏠 Home Page Improvements
+- [x] 1. Hero: add 4 popular tool quick links (Image Compressor, QR Code Generator, Password Generator, Merge PDF)
+- [x] 2. ToolCard: add badges (⭐ Most Popular / 🆕 New / 🔥 Trending)
+- [x] 3. ToolCard: add info tags (Browser-based / Free / Instant Download)
+- [x] 4. Categories: add tool count badges (e.g. Image (14), PDF (8))
 
-Current baseline: Performance 32, LCP 6.3s, TBT 2260ms, CLS 0.321
+## 🚀 SEO Sprint
+- [x] 5. Add "Features" section to tool pages (render from tool data)
+- [ ] 6. Expand FAQ to 5-6 questions per tool (selected tools)
+- [x] 7. Add tool `features` array to data/tools.ts
+- [x] 8. Add internal linking in blog articles (3-5 tools per article)
+- [x] 9. Verify build compiles (npm run build)
+- [x] 10. Sitemap: replace hardcoded BASE_URL with shared SITE_URL from lib/site.ts
+- [x] 11. Sitemap: add trailing slashes & normalize dates (YYYY-MM-DD) for reliability
+- [x] 12. robots.ts: use shared SITE_URL constant for sitemap reference
 
-## Steps
-
-- [x] Read all relevant files (home, tools, blog, layout, footer, scrollreveal, counter, globals.css)
-- [x] 1. Optimize `app/page.tsx` — remove ScrollReveal from hero (above-fold) + AnimatedCounter → static numbers; remove ScrollReveal wrappers from card grids
-- [x] 2. Optimize `app/tools/page.tsx` — remove ScrollReveal wrappers from card grid
-- [x] 3. Optimize `app/blog/page.tsx` — remove ScrollReveal wrappers from card grid
-- [x] 4. Optimize `components/ui/ScrollReveal.tsx` — reveal immediately if already in viewport; reduce JS cost
-- [x] 5. Optimize `app/layout.tsx` — defer GA4/Clarity to lazyOnload; reduce blocking
-- [x] 6. Optimize `globals.css` — reduce expensive blur/paint effects; keep content-visibility
-- [x] 7. Build & verify (next build) — ✅ 94 static pages generated, no errors
-- [ ] 8. Deploy & run Lighthouse check (needs deployment + live test)
-
-## Notes
-- Keep visual identity; remove only performance-blocking animation overhead.
-- Keep `content-visibility: auto` on sections for below-fold rendering.
-- Respect `prefers-reduced-motion`.
-
-## What Changed
-1. **Home hero**: removed ScrollReveal + AnimatedCounter → static numbers (LCP fix)
-2. **Tools grid**: removed ScrollReveal wrappers → direct ToolCard rendering
-3. **Blog grid**: removed ScrollReveal wrappers → direct BlogCard rendering
-4. **ScrollReveal**: SSR renders fully visible; only below-fold items animate; already-visible items reveal instantly
-5. **GA4 + Clarity**: switched to `lazyOnload` (no longer blocks main thread)
-6. **Footer**: removed `minHeight: 280px` (CLS fix)
-7. **CSS**: `contain-intrinsic-size: auto 600px` + reduced-motion guard for gradient text
-
+## 📋 FAQ Expansion (in progress)
+- [ ] qr-generator: add 2 FAQs (3 → 5)
+- [ ] password-generator: add 2 FAQs (3 → 5)
+- [ ] json-formatter: add 2 FAQs (3 → 5)
+- [ ] age-calculator: add 2 FAQs (3 → 5)
+- [ ] loan-calculator: add 2 FAQs (3 → 5)
+- [ ] compress-pdf: add 2 FAQs (3 → 5)
+- [ ] pdf-to-image: add 2 FAQs (3 → 5)
+- [ ] image-to-pdf: add 2 FAQs (3 → 5)
+- [ ] base64-encoder: add 2 FAQs (3 → 5)
+- [ ] color-converter: add 2 FAQs (3 → 5)
+- [ ] character-counter: add 2 FAQs (3 → 5)
+- [ ] uuid-generator: add 2 FAQs (3 → 5)
+- [ ] text-to-speech: add 2 FAQs (3 → 5)
+- [ ] unit-converter: add 2 FAQs (3 → 5)
+- [ ] markdown-editor: add 2 FAQs (3 → 5)
+- [ ] hash-generator: add 2 FAQs (3 → 5)
+- [ ] date-calculator: add 2 FAQs (3 → 5)
+- [ ] case-converter: add 2 FAQs (3 → 5)
+- [ ] html-encoder: add 2 FAQs (3 → 5)
+- [ ] slug-generator: add 2 FAQs (3 → 5)
+- [ ] lorem-ipsum: add 2 FAQs (3 → 5)
+- [ ] bmi-calculator: add 2 FAQs (3 → 5)
+- [ ] percentage-calculator: add 2 FAQs (3 → 5)
+- [ ] vat-calculator: add 2 FAQs (3 → 5)
+- [ ] image-resizer: add 2 FAQs (3 → 5)
+- [ ] image-cropper: add 2 FAQs (3 → 5)
+- [ ] jpg-to-png: add 2 FAQs (3 → 5)
+- [ ] png-to-jpg: add 2 FAQs (3 → 5)
+- [ ] png-to-webp: add 2 FAQs (3 → 5)
+- [ ] jpg-to-webp: add 2 FAQs (3 → 5)
+- [ ] webp-to-png: add 2 FAQs (3 → 5)
+- [ ] webp-to-jpg: add 2 FAQs (3 → 5)
+- [ ] image-rotator: add 2 FAQs (3 → 5)
+- [ ] image-flipper: add 2 FAQs (3 → 5)
+- [ ] image-to-base64: add 2 FAQs (3 → 5)
+- [ ] url-encoder: add 2 FAQs (3 → 5)
+- [ ] jwt-decoder: add 2 FAQs (3 → 5)
+- [ ] password-strength: add 2 FAQs (3 → 5)

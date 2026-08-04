@@ -1,16 +1,23 @@
 import Link from "next/link";
-import SearchTools from "@/components/home/SearchTools";
+import SearchToolsLazy from "@/components/home/SearchToolsLazy";
 import ToolCard from "@/components/tools/ToolCard";
-import { getPopularTools } from "@/data/tools";
+import { getPopularTools, tools } from "@/data/tools";
 import { categories } from "@/data/categories";
+import { blogPosts } from "@/data/blog";
 
 export default function Home() {
   const popularTools = getPopularTools();
 
+  // Compute tool count per category for badges
+  const categoryCounts = categories.reduce<Record<string, number>>((acc, cat) => {
+    acc[cat.slug] = tools.filter((t) => t.category === cat.slug).length;
+    return acc;
+  }, {});
+
   const stats = [
-    { label: "Free Tools", value: 41, suffix: "+" },
-    { label: "Blog Articles", value: 30, suffix: "+" },
-    { label: "Categories", value: 8, suffix: "" },
+    { label: "Free Tools", value: tools.length, suffix: "+" },
+    { label: "Blog Articles", value: blogPosts.length, suffix: "+" },
+    { label: "Categories", value: categories.length, suffix: "" },
     { label: "100% Free", value: 100, suffix: "%" },
   ];
 
@@ -22,21 +29,17 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-secondary/5 to-accent/10" />
         <div className="absolute inset-0 grid-pattern" />
 
-        {/* Floating orbs */}
-        <div className="orb-1 absolute -top-40 -right-40 h-80 w-80 rounded-full bg-primary/10 blur-3xl" />
-        <div className="orb-2 absolute -bottom-40 -left-40 h-80 w-80 rounded-full bg-secondary/10 blur-3xl" />
-        <div className="orb-3 absolute top-1/2 left-1/4 h-56 w-56 rounded-full bg-accent/10 blur-3xl" />
-
-        {/* Decorative spinning ring */}
-        <div className="border-spin absolute -top-24 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full border border-primary/10" />
-        <div className="border-spin absolute -top-24 left-1/2 h-56 w-56 -translate-x-1/2 rounded-full border border-secondary/10" style={{ animationDirection: "reverse" }} />
+        {/* Static decorative orbs — no blur filter (blur is paint-heavy and delays LCP), no animation */}
+        <div className="absolute -top-40 -right-40 h-80 w-80 rounded-full bg-primary/10" />
+        <div className="absolute -bottom-40 -left-40 h-80 w-80 rounded-full bg-secondary/10" />
+        <div className="absolute top-1/2 left-1/4 h-56 w-56 rounded-full bg-accent/10" />
 
         <div className="relative mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24 lg:py-28">
           <div className="mx-auto max-w-3xl text-center">
             {/* Badge */}
-            <div className="mb-6 inline-flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-xs font-medium text-primary backdrop-blur-sm badge-pulse">
+            <div className="mb-6 inline-flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-xs font-medium text-primary badge-pulse">
               <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-              41+ Free Online Tools — No Sign-up Required
+              {tools.length}+ Free Online Tools — No Sign-up Required
             </div>
 
             {/* Title */}
@@ -54,9 +57,32 @@ export default function Home() {
               No ads. No sign-ups. Just fast, reliable tools for developers, designers, and everyone.
             </p>
 
-            {/* Search */}
+            {/* Popular quick links */}
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-2.5">
+              <span className="text-xs font-medium text-muted">Popular:</span>
+              {[
+                { name: "Image Compressor", slug: "image-compressor" },
+                { name: "QR Code Generator", slug: "qr-generator" },
+                { name: "Password Generator", slug: "password-generator" },
+                { name: "Merge PDF", slug: "merge-pdf" },
+              ].map((tool) => (
+                <Link
+                  key={tool.slug}
+                  href={`/tools/${tool.slug}`}
+                  prefetch={false}
+                  className="inline-flex items-center gap-1 rounded-full border border-border bg-background/60 px-3.5 py-1.5 text-xs font-medium text-foreground transition-all hover:border-primary/40 hover:text-primary hover:shadow-sm"
+                >
+                  {tool.name}
+                  <svg className="h-3 w-3 text-muted transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                  </svg>
+                </Link>
+              ))}
+            </div>
+
+            {/* Search — lazy hydrated after first paint */}
             <div className="mt-8 flex justify-center">
-              <SearchTools />
+              <SearchToolsLazy />
             </div>
 
             {/* Stats — static (no JS counter, faster LCP) */}
@@ -64,7 +90,7 @@ export default function Home() {
               {stats.map((stat) => (
                 <div
                   key={stat.label}
-                  className="rounded-xl border border-border/50 bg-background/50 backdrop-blur-sm p-4 card-glow"
+                  className="rounded-xl border border-border/50 bg-background/50 p-4 card-glow"
                 >
                   <p className="text-xl font-bold text-foreground stat-number">
                     {stat.value}
@@ -144,6 +170,9 @@ export default function Home() {
                 <span className="text-xs font-semibold text-foreground">
                   {cat.name}
                 </span>
+                <span className="rounded-full border border-border bg-muted/10 px-2 py-0.5 text-[10px] font-medium text-muted">
+                  {categoryCounts[cat.slug] || 0} tool{(categoryCounts[cat.slug] || 0) !== 1 && "s"}
+                </span>
               </Link>
             ))}
           </div>
@@ -153,9 +182,9 @@ export default function Home() {
       {/* ============ CTA ============ */}
       <section className="relative overflow-hidden bg-gradient-to-br from-primary/5 via-secondary/5 to-accent/5 py-16 sm:py-20">
         <div className="absolute inset-0 grid-pattern opacity-30" />
-        {/* Floating orbs */}
-        <div className="orb-2 absolute -top-20 right-1/4 h-56 w-56 rounded-full bg-primary/10 blur-3xl" />
-        <div className="orb-3 absolute -bottom-20 left-1/4 h-48 w-48 rounded-full bg-secondary/10 blur-3xl" />
+        {/* Static decorative orbs — no blur, no animation */}
+        <div className="absolute -top-20 right-1/4 h-56 w-56 rounded-full bg-primary/10" />
+        <div className="absolute -bottom-20 left-1/4 h-48 w-48 rounded-full bg-secondary/10" />
 
         <div className="relative mx-auto max-w-4xl px-4 text-center sm:px-6">
           <h2 className="text-2xl font-bold text-foreground sm:text-3xl">

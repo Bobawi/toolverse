@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import { tools, getToolBySlug } from "@/data/tools";
 import ToolLayout from "@/components/ui/ToolLayout";
 import ToolFAQ from "@/components/tool-layout/ToolFAQ";
+import ToolFeatures from "@/components/tool-layout/ToolFeatures";
 import ToolHowToUse from "@/components/tool-layout/ToolHowToUse";
 import ToolRelatedTools from "@/components/tool-layout/ToolRelatedTools";
 import { SITE_URL } from "@/lib/site";
@@ -51,9 +52,19 @@ const toolComponents: Record<string, React.ComponentType> = {
     "compress-pdf": dynamic(() => import("./compress-pdf")),
     "pdf-to-image": dynamic(() => import("./pdf-to-image")),
     "image-to-pdf": dynamic(() => import("./image-to-pdf")),
-    "url-encoder": dynamic(() => import("./url-encoder")),
+"url-encoder": dynamic(() => import("./url-encoder")),
     "jwt-decoder": dynamic(() => import("./jwt-decoder")),
     "password-strength": dynamic(() => import("./password-strength")),
+    "random-number-generator": dynamic(() => import("./random-number-generator")),
+    "tip-calculator": dynamic(() => import("./tip-calculator")),
+    "binary-converter": dynamic(() => import("./binary-converter")),
+    "roman-numeral-converter": dynamic(() => import("./roman-numeral-converter")),
+    "temperature-converter": dynamic(() => import("./temperature-converter")),
+    "discount-calculator": dynamic(() => import("./discount-calculator")),
+    "stopwatch": dynamic(() => import("./stopwatch")),
+    "countdown-timer": dynamic(() => import("./countdown-timer")),
+    "currency-converter": dynamic(() => import("./currency-converter")),
+    "calculator": dynamic(() => import("./calculator")),
 };
 
 export function generateStaticParams() {
@@ -121,6 +132,7 @@ export default function ToolPage({
             )}
 
             {tool.howToUse && <ToolHowToUse steps={tool.howToUse} />}
+            {tool.features && <ToolFeatures features={tool.features} />}
             {tool.faq && <ToolFAQ faq={tool.faq} />}
 
             <ToolRelatedTools slug={slug} />

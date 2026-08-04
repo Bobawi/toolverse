@@ -103,8 +103,8 @@
 }
 
 @keyframes pulseGlow {
-  0%, 100% { opacity: 1; box-shadow: 0 0 5px rgba(99, 102, 241, 0.3); }
-  50% { opacity: 0.8; box-shadow: 0 0 15px rgba(99, 102, 241, 0.6); }
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
 }
 
 @keyframes spinSlow {
@@ -182,17 +182,12 @@ section {
 /* Gradient text */
 .gradient-text {
   background: linear-gradient(135deg, #6366f1, #06b6d4, #f59e0b);
-  background-size: 200% 200%;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  animation: gradient 8s ease infinite;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .gradient-text {
-    animation: none;
-  }
+  /* Static gradient — no background-position animation. Animating
+     background-position repaints the LCP heading on every frame,
+     which hurts LCP and TBT. */
 }
 
 /* Grid pattern background */
@@ -281,17 +276,19 @@ section {
   animation: wiggle 0.5s ease-in-out;
 }
 
-/* Pulsing glow badge */
+/* Pulsing glow badge — opacity pulse only (compositor-friendly).
+   box-shadow animation is paint-heavy, so use opacity fade. */
 .badge-pulse {
   animation: pulseGlow 2s ease-in-out infinite;
 }
 
-/* Slow spin for decorative borders */
+/* Slow spin for decorative borders — transform-only, compositor-friendly. */
 .border-spin {
   animation: spinSlow 8s linear infinite;
 }
 
-/* Floating orb variants */
+/* Floating orb variants — transform-only float animations are
+   compositor friendly and cheap. */
 .orb-1 {
   animation: float 6s ease-in-out infinite;
 }
