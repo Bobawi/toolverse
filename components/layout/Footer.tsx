@@ -1,7 +1,11 @@
+"use client";
+
 import Link from "next/link";
+import { useLanguage } from "@/components/LanguageProvider";
 
 export default function Footer() {
     const currentYear = new Date().getFullYear();
+    const { t } = useLanguage();
 
     return (
         <footer className="border-t border-border bg-background">
@@ -18,22 +22,22 @@ export default function Footer() {
                             </span>
                         </Link>
                         <p className="text-sm text-muted leading-relaxed">
-                            Free online tools for images, PDFs, developers, text, AI, and everyday tasks. Fast, secure, and privacy-friendly.
+                            {t("footer.tagline")}
                         </p>
                     </div>
 
                     {/* Links */}
                     <div>
                         <h3 className="mb-3 text-sm font-semibold text-foreground">
-                            Navigation
+                            {t("footer.nav")}
                         </h3>
                         <ul className="space-y-2">
                             {[
-                                { label: "Home", href: "/" },
-                                { label: "Tools", href: "/tools" },
-                                { label: "Blog", href: "/blog" },
-                                { label: "About", href: "/about" },
-                                { label: "Contact", href: "/contact" },
+                                { label: t("nav.home"), href: "/" },
+                                { label: t("nav.tools"), href: "/tools" },
+                                { label: t("nav.blog"), href: "/blog" },
+                                { label: t("nav.about"), href: "/about" },
+                                { label: t("nav.contact"), href: "/contact" },
                             ].map((item) => (
                                 <li key={item.href}>
                                     <Link
@@ -49,14 +53,14 @@ export default function Footer() {
 
                     <div>
                         <h3 className="mb-3 text-sm font-semibold text-foreground">
-                            Categories
+                            {t("footer.categories")}
                         </h3>
                         <ul className="space-y-2">
                             {[
-                                { label: "Image", href: "/categories/image" },
-                                { label: "PDF", href: "/categories/pdf" },
-                                { label: "Developer", href: "/categories/developer" },
-                                { label: "Calculators", href: "/categories/calculators" },
+                                { label: t("cat.image"), href: "/categories/image" },
+                                { label: t("cat.pdf"), href: "/categories/pdf" },
+                                { label: t("cat.developer"), href: "/categories/developer" },
+                                { label: t("cat.calculators"), href: "/categories/calculators" },
                             ].map((item) => (
                                 <li key={item.href}>
                                     <Link
@@ -72,14 +76,14 @@ export default function Footer() {
 
                     <div>
                         <h3 className="mb-3 text-sm font-semibold text-foreground">
-                            Legal
+                            {t("footer.legal")}
                         </h3>
                         <ul className="space-y-2">
                             {[
-                                { label: "Privacy Policy", href: "/privacy" },
-                                { label: "Terms of Service", href: "/terms" },
-                                { label: "About Us", href: "/about" },
-                                { label: "Contact", href: "/contact" },
+                                { label: t("footer.privacy"), href: "/privacy" },
+                                { label: t("footer.terms"), href: "/terms" },
+                                { label: t("footer.about"), href: "/about" },
+                                { label: t("footer.contact"), href: "/contact" },
                             ].map((item) => (
                                 <li key={item.href}>
                                     <Link
@@ -95,10 +99,9 @@ export default function Footer() {
                 </div>
 
                 <div className="mt-8 border-t border-border pt-5 text-center text-sm text-muted">
-                    &copy; {currentYear} ToolVerse. All rights reserved.
+                    &copy; {currentYear} ToolVerse. {t("footer.rights")}
                 </div>
             </div>
         </footer>
     );
 }
-

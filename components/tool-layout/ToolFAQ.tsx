@@ -1,14 +1,18 @@
 "use client";
 
 import { useState } from "react";
-import { FaqItem } from "@/types";
+import { Tool } from "@/types";
+import { useLanguage } from "@/components/LanguageProvider";
+import { localizeToolFaq } from "@/lib/localize";
 
 interface ToolFAQProps {
-    faq: FaqItem[];
+    tool: Tool;
 }
 
-export default function ToolFAQ({ faq }: ToolFAQProps) {
+export default function ToolFAQ({ tool }: ToolFAQProps) {
     const [openIndex, setOpenIndex] = useState<number | null>(0);
+    const { t, locale } = useLanguage();
+    const faq = localizeToolFaq(tool, locale);
 
     if (!faq || faq.length === 0) return null;
 
@@ -33,7 +37,7 @@ export default function ToolFAQ({ faq }: ToolFAQProps) {
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
             />
             <h2 className="text-xl font-bold text-foreground sm:text-2xl">
-                Frequently Asked Questions
+                {t("tool.faq")}
             </h2>
             <div className="mt-6 space-y-3">
                 {faq.map((item, index) => (
@@ -49,9 +53,8 @@ export default function ToolFAQ({ faq }: ToolFAQProps) {
                                 {item.question}
                             </span>
                             <svg
-                                className={`h-5 w-5 shrink-0 text-muted transition-transform ${
-                                    openIndex === index ? "rotate-180" : ""
-                                }`}
+                                className={`h-5 w-5 shrink-0 text-muted transition-transform ${openIndex === index ? "rotate-180" : ""
+                                    }`}
                                 fill="none"
                                 viewBox="0 0 24 24"
                                 stroke="currentColor"

@@ -1,10 +1,16 @@
-import { HowToStep } from "@/types";
+"use client";
+
+import { Tool } from "@/types";
+import { useLanguage } from "@/components/LanguageProvider";
+import { localizeToolHowToUse } from "@/lib/localize";
 
 interface ToolHowToUseProps {
-    steps: HowToStep[];
+    tool: Tool;
 }
 
-export default function ToolHowToUse({ steps }: ToolHowToUseProps) {
+export default function ToolHowToUse({ tool }: ToolHowToUseProps) {
+    const { t, locale } = useLanguage();
+    const steps = localizeToolHowToUse(tool, locale);
     if (!steps || steps.length === 0) return null;
 
     const structuredData = {
@@ -26,7 +32,7 @@ export default function ToolHowToUse({ steps }: ToolHowToUseProps) {
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
             />
             <h2 className="text-xl font-bold text-foreground sm:text-2xl">
-                How to Use
+                {t("tool.howToUse")}
             </h2>
             <div className="mt-6 space-y-6">
                 {steps.map((step) => (

@@ -1,57 +1,26 @@
-# ToolVerse — Implementation TODO
+# ToolVerse Arabic Deep Translation — TODO
 
-## 🏠 Home Page Improvements
-- [x] 1. Hero: add 4 popular tool quick links (Image Compressor, QR Code Generator, Password Generator, Merge PDF)
-- [x] 2. ToolCard: add badges (⭐ Most Popular / 🆕 New / 🔥 Trending)
-- [x] 3. ToolCard: add info tags (Browser-based / Free / Instant Download)
-- [x] 4. Categories: add tool count badges (e.g. Image (14), PDF (8))
+## Phase 1: UI Shell
+- [x] Add new UI translation keys (section headings, badges, footer categories, homepage, tool detail headings) to `lib/i18n.ts` (en/fr/ar)
+- [x] Wire homepage `app/page.tsx` hardcoded text through `t()`
+- [x] Wire `components/layout/Footer.tsx` categories through `t()`
+- [x] Wire `components/tools/ToolCard.tsx` badges/tags through `t()`
+- [x] Localize category names (`data/categories.ts` + helper)
 
-## 🚀 SEO Sprint
-- [x] 5. Add "Features" section to tool pages (render from tool data)
-- [ ] 6. Expand FAQ to 5-6 questions per tool (selected tools)
-- [x] 7. Add tool `features` array to data/tools.ts
-- [x] 8. Add internal linking in blog articles (3-5 tools per article)
-- [x] 9. Verify build compiles (npm run build)
-- [x] 10. Sitemap: replace hardcoded BASE_URL with shared SITE_URL from lib/site.ts
-- [x] 11. Sitemap: add trailing slashes & normalize dates (YYYY-MM-DD) for reliability
-- [x] 12. robots.ts: use shared SITE_URL constant for sitemap reference
+## Phase 2: Tool Deep Translation
+- [x] Create `data/tool-translations.ts` with Arabic name/description/features/faq/howToUse for all 50+ tools
+- [x] Add `localizeTool(tool, locale)` helper
+- [x] Wire `components/tools/ToolCard.tsx` to localized names
+- [x] Wire `app/tools/page.tsx` category + tool names
+- [x] Wire `app/page.tsx` popular tools + categories
 
-## 📋 FAQ Expansion (in progress)
-- [ ] qr-generator: add 2 FAQs (3 → 5)
-- [ ] password-generator: add 2 FAQs (3 → 5)
-- [ ] json-formatter: add 2 FAQs (3 → 5)
-- [ ] age-calculator: add 2 FAQs (3 → 5)
-- [ ] loan-calculator: add 2 FAQs (3 → 5)
-- [ ] compress-pdf: add 2 FAQs (3 → 5)
-- [ ] pdf-to-image: add 2 FAQs (3 → 5)
-- [ ] image-to-pdf: add 2 FAQs (3 → 5)
-- [ ] base64-encoder: add 2 FAQs (3 → 5)
-- [ ] color-converter: add 2 FAQs (3 → 5)
-- [ ] character-counter: add 2 FAQs (3 → 5)
-- [ ] uuid-generator: add 2 FAQs (3 → 5)
-- [ ] text-to-speech: add 2 FAQs (3 → 5)
-- [ ] unit-converter: add 2 FAQs (3 → 5)
-- [ ] markdown-editor: add 2 FAQs (3 → 5)
-- [ ] hash-generator: add 2 FAQs (3 → 5)
-- [ ] date-calculator: add 2 FAQs (3 → 5)
-- [ ] case-converter: add 2 FAQs (3 → 5)
-- [ ] html-encoder: add 2 FAQs (3 → 5)
-- [ ] slug-generator: add 2 FAQs (3 → 5)
-- [ ] lorem-ipsum: add 2 FAQs (3 → 5)
-- [ ] bmi-calculator: add 2 FAQs (3 → 5)
-- [ ] percentage-calculator: add 2 FAQs (3 → 5)
-- [ ] vat-calculator: add 2 FAQs (3 → 5)
-- [ ] image-resizer: add 2 FAQs (3 → 5)
-- [ ] image-cropper: add 2 FAQs (3 → 5)
-- [ ] jpg-to-png: add 2 FAQs (3 → 5)
-- [ ] png-to-jpg: add 2 FAQs (3 → 5)
-- [ ] png-to-webp: add 2 FAQs (3 → 5)
-- [ ] jpg-to-webp: add 2 FAQs (3 → 5)
-- [ ] webp-to-png: add 2 FAQs (3 → 5)
-- [ ] webp-to-jpg: add 2 FAQs (3 → 5)
-- [ ] image-rotator: add 2 FAQs (3 → 5)
-- [ ] image-flipper: add 2 FAQs (3 → 5)
-- [ ] image-to-base64: add 2 FAQs (3 → 5)
-- [ ] url-encoder: add 2 FAQs (3 → 5)
-- [ ] jwt-decoder: add 2 FAQs (3 → 5)
-- [ ] password-strength: add 2 FAQs (3 → 5)
+## Phase 3: Tool Detail Pages
+- [x] Wire `components/tool-layout/ToolFeatures.tsx`, `ToolHowToUse.tsx`, `ToolFAQ.tsx` localized via `tool` prop
+- [x] Update `app/tools/[slug]/page.tsx` to pass `tool` to localized layout components
+- [x] Localize "Features", "How to Use", "Frequently Asked Questions" headings
+- [x] Localize `ToolRelatedTools` subtitle via `related.subtitle` key
+- [x] Localize `ToolShareButtons` (share.title, share.copy, share.copied, share.on keys)
+
+## Phase 4: Verification
+- [ ] TypeScript build passes
+- [ ] RTL rendering check

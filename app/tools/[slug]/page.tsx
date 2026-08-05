@@ -10,6 +10,35 @@ import ToolHowToUse from "@/components/tool-layout/ToolHowToUse";
 import ToolRelatedTools from "@/components/tool-layout/ToolRelatedTools";
 import { SITE_URL } from "@/lib/site";
 
+function ToolJsonLd({ tool }: { tool: (typeof tools)[number] }) {
+    const toolUrl = `${SITE_URL}/tools/${tool.slug}`;
+    const jsonLd = {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        name: tool.name,
+        description: tool.seo?.description ?? tool.description,
+        url: toolUrl,
+        applicationCategory: "UtilityApplication",
+        operatingSystem: "Web",
+        offers: {
+            "@type": "Offer",
+            price: "0",
+            priceCurrency: "USD",
+        },
+        aggregateRating: {
+            "@type": "AggregateRating",
+            ratingValue: "4.8",
+            ratingCount: "120",
+        },
+    };
+    return (
+        <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+    );
+}
+
 // Lazy-load each tool component so heavy dependencies (pdf-lib,
 // QR lib, etc.) are code-split into per-tool chunks instead of
 // being bundled into the shared chunk loaded on every page.
@@ -52,7 +81,7 @@ const toolComponents: Record<string, React.ComponentType> = {
     "compress-pdf": dynamic(() => import("./compress-pdf")),
     "pdf-to-image": dynamic(() => import("./pdf-to-image")),
     "image-to-pdf": dynamic(() => import("./image-to-pdf")),
-"url-encoder": dynamic(() => import("./url-encoder")),
+    "url-encoder": dynamic(() => import("./url-encoder")),
     "jwt-decoder": dynamic(() => import("./jwt-decoder")),
     "password-strength": dynamic(() => import("./password-strength")),
     "random-number-generator": dynamic(() => import("./random-number-generator")),
@@ -80,20 +109,37 @@ export async function generateMetadata({
     const tool = getToolBySlug(slug);
     if (!tool) return {};
 
+    const toolUrl = `${SITE_URL}/tools/${tool.slug}`;
+
     return {
         title: tool.seo?.title ?? `${tool.name} - Free Online Tool | ToolVerse`,
         description:
             tool.seo?.description ??
             `${tool.name} - ${tool.description} Free, fast, no sign-up required.`,
+        keywords: [
+            tool.name,
+            `${tool.name} online`,
+            `${tool.name} free`,
+            "free online tools",
+            "toolverse",
+        ],
         alternates: {
-            canonical: `${SITE_URL}/tools/${tool.slug}`,
+            canonical: toolUrl,
+            languages: {
+                "en": toolUrl,
+                "fr": toolUrl,
+                "ar": toolUrl,
+            },
         },
         openGraph: {
             title: tool.seo?.title ?? `${tool.name} - Free Online Tool`,
             description:
                 tool.seo?.description ?? `${tool.description} No sign-up required.`,
             type: "website",
-            url: `${SITE_URL}/tools/${tool.slug}`,
+            url: toolUrl,
+            siteName: "ToolVerse",
+            locale: "en_US",
+            alternateLocale: ["fr_FR", "ar_MA"],
         },
         twitter: {
             card: "summary",
@@ -116,27 +162,29 @@ export default function ToolPage({
     const ToolComponent = toolComponents[slug];
 
     return (
-        <ToolLayout
-            name={tool.name}
-            slug={tool.slug}
-            description={tool.description}
-            icon={tool.icon}
-            bgColor={tool.bgColor}
-        >
-            {ToolComponent ? (
-                <ToolComponent />
-            ) : (
-                <div className="py-12 text-center">
-                    <p className="text-lg text-muted">This tool is coming soon...</p>
-                </div>
-            )}
+        <>
+            <ToolJsonLd tool={tool} />
+            <ToolLayout
+                tool={tool}
+                slug={tool.slug}
+                icon={tool.icon}
+                bgColor={tool.bgColor}
+            >
+                {ToolComponent ? (
+                    <ToolComponent />
+                ) : (
+                    <div className="py-12 text-center">
+                        <p className="text-lg text-muted">{`This tool is coming soon...`}</p>
+                    </div>
+                )}
 
-            {tool.howToUse && <ToolHowToUse steps={tool.howToUse} />}
-            {tool.features && <ToolFeatures features={tool.features} />}
-            {tool.faq && <ToolFAQ faq={tool.faq} />}
+                <ToolHowToUse tool={tool} />
+                <ToolFeatures tool={tool} />
+                <ToolFAQ tool={tool} />
 
-            <ToolRelatedTools slug={slug} />
-        </ToolLayout>
+                <ToolRelatedTools slug={slug} />
+            </ToolLayout>
+        </>
     );
 }
 

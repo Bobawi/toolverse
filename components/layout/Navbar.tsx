@@ -3,17 +3,20 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useTheme } from "@/components/ThemeProvider";
+import { useLanguage } from "@/components/LanguageProvider";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 export default function Navbar() {
     const [mobileOpen, setMobileOpen] = useState(false);
     const { theme, toggleTheme } = useTheme();
+    const { t } = useLanguage();
 
     const navLinks = [
-        { label: "Home", href: "/" },
-        { label: "Tools", href: "/tools" },
-        { label: "Blog", href: "/blog" },
-        { label: "About", href: "/about" },
-        { label: "Contact", href: "/contact" },
+        { label: t("nav.home"), href: "/" },
+        { label: t("nav.tools"), href: "/tools" },
+        { label: t("nav.blog"), href: "/blog" },
+        { label: t("nav.about"), href: "/about" },
+        { label: t("nav.contact"), href: "/contact" },
     ];
 
     return (
@@ -42,6 +45,8 @@ export default function Navbar() {
                             </Link>
                         ))}
                     </nav>
+                    {/* Language Switcher */}
+                    <LanguageSwitcher />
                     {/* Theme Toggle */}
                     <button
                         onClick={toggleTheme}
@@ -60,8 +65,9 @@ export default function Navbar() {
                     </button>
                 </div>
 
-                {/* Mobile: Theme toggle + menu button */}
+                {/* Mobile: Language switcher + theme toggle + menu button */}
                 <div className="flex items-center gap-2 md:hidden">
+                    <LanguageSwitcher />
                     <button
                         onClick={toggleTheme}
                         className="flex h-9 w-9 items-center justify-center rounded-lg border border-border text-muted transition-all hover:text-foreground"

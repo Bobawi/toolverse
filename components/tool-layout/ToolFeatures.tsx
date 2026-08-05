@@ -1,14 +1,22 @@
+"use client";
+
+import { Tool } from "@/types";
+import { useLanguage } from "@/components/LanguageProvider";
+import { localizeToolFeatures } from "@/lib/localize";
+
 interface ToolFeaturesProps {
-    features: string[];
+    tool: Tool;
 }
 
-export default function ToolFeatures({ features }: ToolFeaturesProps) {
+export default function ToolFeatures({ tool }: ToolFeaturesProps) {
+    const { t, locale } = useLanguage();
+    const features = localizeToolFeatures(tool, locale);
     if (!features || features.length === 0) return null;
 
     return (
         <section className="mt-10">
             <h2 className="text-xl font-bold text-foreground sm:text-2xl">
-                Features
+                {t("tool.features")}
             </h2>
             <div className="mt-6 grid gap-3 sm:grid-cols-2">
                 {features.map((feature, index) => (

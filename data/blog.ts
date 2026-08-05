@@ -2144,6 +2144,78 @@ export const blogPosts: BlogPost[] = [
                 ],
             },
         ],
+},
+    {
+        slug: "vat-rate-morocco-guide",
+        title: "VAT Rates in Morocco: The Complete Guide for 2025",
+        description:
+            "Learn everything about VAT (TVA) rates in Morocco — 20%, 14%, 10%, and 7%. How to calculate, add, and remove VAT for invoices and businesses.",
+        date: "2025-10-20",
+        readTime: "6 min read",
+        category: "Calculators",
+        icon: "🧾",
+        tags: ["vat morocco", "tva maroc", "moroccan tax", "vat calculator", "invoice"],
+        seo: {
+            title: "VAT Rates in Morocco 2025: TVA Guide & Calculator",
+            description:
+                "Complete guide to VAT (TVA) rates in Morocco: 20%, 14%, 10%, and 7%. Learn how to calculate, add, and remove VAT for invoices and Moroccan businesses.",
+        },
+        sections: [
+            {
+                heading: "What Is VAT in Morocco?",
+                paragraphs: [
+                    "VAT (Value Added Tax), known as TVA (Taxe sur la Valeur Ajoutée) in French, is the main consumption tax in Morocco. It's applied at each stage of the production and distribution chain, and businesses collect it on behalf of the state.",
+                    "Understanding Moroccan VAT rates is essential for businesses, freelancers, and anyone issuing invoices in Morocco.",
+                ],
+            },
+            {
+                heading: "The 4 VAT Rates in Morocco",
+                paragraphs: [
+                    "Morocco applies four different VAT rates depending on the type of goods or services. Getting the right rate is crucial for accurate invoicing.",
+                ],
+                list: [
+                    "20% — Standard rate: applies to most goods and services, including electronics, vehicles, and general products.",
+                    "14% — Reduced rate: for certain products like fuel, and specific services.",
+                    "10% — Second reduced rate: applies to hotels, catering, transport, and construction.",
+                    "7% — Lowest rate: for essential goods like basic food items, books, and medicines.",
+                ],
+            },
+            {
+                heading: "How to Calculate VAT in Morocco",
+                paragraphs: [
+                    "To add VAT to a net (pre-tax) price, multiply by (1 + rate). For example, to add 20% VAT to a 1,000 MAD price: 1,000 × 1.20 = 1,200 MAD gross.",
+                    "To remove VAT from a gross price, divide by (1 + rate). To find the net price of a 1,200 MAD invoice at 20%: 1,200 ÷ 1.20 = 1,000 MAD.",
+                ],
+                toolCta: {
+                    slug: "vat-calculator",
+                    text: "Use our free VAT calculator to add or remove VAT from any Moroccan price instantly",
+                },
+            },
+            {
+                heading: "Business Registration for VAT in Morocco",
+                paragraphs: [
+                    "Businesses in Morocco must register for VAT when their annual turnover exceeds the legal threshold. Once registered, they can claim input VAT credits on purchases.",
+                    "Freelancers and small businesses should consult with a tax advisor or the Direction Générale des Impôts (DGI) to understand their obligations.",
+                ],
+            },
+            {
+                heading: "Frequently Asked Questions",
+                faq: [
+                    {
+                        question: "What is the standard VAT rate in Morocco?",
+                        answer: "The standard VAT rate in Morocco is 20%, applied to most goods and services. Reduced rates of 14%, 10%, and 7% apply to specific categories.",
+                    },
+                    {
+                        question: "How do I calculate VAT on an invoice?",
+                        answer: "To add VAT, multiply the net amount by (1 + rate). To remove VAT, divide the gross amount by (1 + rate). Our free VAT calculator does this instantly.",
+                    },
+                    {
+                        question: "Are there VAT exemptions in Morocco?",
+                        answer: "Yes, certain essential goods and services are exempt from VAT, including some basic food items, and exports are typically zero-rated.",
+                    },
+                ],
+            },
+        ],
     },
 ];
 

@@ -33,15 +33,17 @@ export default function VatCalculator() {
     const formatCurrency = (val: number) =>
         new Intl.NumberFormat("en-US", {
             style: "currency",
-            currency: "USD",
+            currency: "MAD",
         }).format(val);
 
+    // Morocco VAT (TVA) rates as set by the General Tax Code (CGI).
+    // 20% is the standard rate; reduced rates apply to specific goods/services.
     const vatRates = [
-        { value: 5, label: "5% (Reduced)" },
-        { value: 10, label: "10% (Standard)" },
-        { value: 13, label: "13% (Standard)" },
-        { value: 20, label: "20% (Standard)" },
-        { value: 27, label: "27% (High)" },
+        { value: 20, label: "20% (Standard TVA Morocco)" },
+        { value: 14, label: "14% (TVA)" },
+        { value: 10, label: "10% (TVA)" },
+        { value: 7, label: "7% (TVA)" },
+        { value: 0, label: "0% (Exempt)" },
     ];
 
     return (

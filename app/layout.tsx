@@ -3,7 +3,9 @@ import { Geist, Geist_Mono } from "next/font/google";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import ThemeProvider from "@/components/ThemeProvider";
+import LanguageProvider from "@/components/LanguageProvider";
 import AnalyticsLoader from "@/components/AnalyticsLoader";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { SITE_URL } from "@/lib/site";
 import "./globals.css";
 
@@ -150,6 +152,8 @@ export default function RootLayout({
 
         {/* Preconnect for analytics — actual script loads on first interaction (AnalyticsLoader) */}
         <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://www.google-analytics.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://scripts.clarity.ms" />
         <link rel="dns-prefetch" href="https://www.clarity.ms" />
 
         <script
@@ -172,14 +176,38 @@ export default function RootLayout({
             }),
           }}
         />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              name: "ToolVerse",
+              url: SITE_URL,
+              description:
+                "Free online tools for images, PDFs, developers, text, AI, and everyday tasks.",
+              potentialAction: {
+                "@type": "SearchAction",
+                target: {
+                  "@type": "EntryPoint",
+                  urlTemplate: `${SITE_URL}/tools?search={search_term_string}`,
+                },
+                "query-input": "required name=search_term_string",
+              },
+}),
+          }}
+        />
       </head>
       <body className="min-h-full flex flex-col">
         <ThemeProvider>
-          <Navbar />
-          <main className="flex-1">{children}</main>
-          <Footer />
+          <LanguageProvider>
+            <Navbar />
+            <main className="flex-1">{children}</main>
+            <Footer />
+          </LanguageProvider>
         </ThemeProvider>
         <AnalyticsLoader />
+        <SpeedInsights />
       </body>
     </html>
   );

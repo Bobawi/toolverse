@@ -1,5 +1,9 @@
+"use client";
+
 import Link from "next/link";
 import { tools } from "@/data/tools";
+import { useLanguage } from "@/components/LanguageProvider";
+import { localizeToolName, localizeToolDescription, localizeCategory } from "@/lib/localize";
 
 interface ToolRelatedToolsProps {
     slug: string;
@@ -10,6 +14,7 @@ export default function ToolRelatedTools({
     slug,
     limit = 4,
 }: ToolRelatedToolsProps) {
+    const { t, locale } = useLanguage();
     const currentTool = tools.find((tool) => tool.slug === slug);
     if (!currentTool) return null;
 
@@ -24,10 +29,10 @@ export default function ToolRelatedTools({
     return (
         <section className="mt-10 border-t border-border pt-8">
             <h2 className="text-lg font-bold text-foreground sm:text-xl">
-                Related Tools
+                {t("tool.relatedTools")}
             </h2>
             <p className="mt-1 text-sm text-muted">
-                More useful tools in the {currentTool.category} category
+                {t("related.subtitle").replace("{cat}", localizeCategory(currentTool, locale))}
             </p>
 
             <div className="mt-5 grid gap-3 sm:grid-cols-2">
@@ -44,10 +49,10 @@ export default function ToolRelatedTools({
                         </div>
                         <div className="min-w-0 flex-1">
                             <p className="text-sm font-semibold text-foreground">
-                                {tool.name}
+                                {localizeToolName(tool, locale)}
                             </p>
                             <p className="truncate text-xs text-muted">
-                                {tool.description}
+                                {localizeToolDescription(tool, locale)}
                             </p>
                         </div>
                         <svg

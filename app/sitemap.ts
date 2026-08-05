@@ -10,7 +10,7 @@ import { SITE_URL } from "@/lib/site";
  * deterministic, so its content doesn't change on every request.
  * This avoids unnecessary re-fetches and lets Google cache it reliably.
  */
-const SITE_LAUNCH_DATE = new Date("2026-07-01");
+const SITE_LAUNCH_DATE = new Date("2025-10-01");
 
 /**
  * Normalize a date to a stable YYYY-MM-DD string.

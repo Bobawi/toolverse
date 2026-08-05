@@ -1,11 +1,18 @@
+"use client";
+
 import Link from "next/link";
 import SearchToolsLazy from "@/components/home/SearchToolsLazy";
 import ToolCard from "@/components/tools/ToolCard";
 import { getPopularTools, tools } from "@/data/tools";
 import { categories } from "@/data/categories";
 import { blogPosts } from "@/data/blog";
+import { useLanguage } from "@/components/LanguageProvider";
+import { getCategoryBySlug } from "@/data/categories";
+import { localizeToolName } from "@/lib/localize";
+import { getToolBySlug } from "@/data/tools";
 
 export default function Home() {
+  const { t, locale } = useLanguage();
   const popularTools = getPopularTools();
 
   // Compute tool count per category for badges
@@ -14,11 +21,13 @@ export default function Home() {
     return acc;
   }, {});
 
+  // Real, verifiable stats — no fake numbers. All values reflect actual
+  // tool/category counts or factual claims (100% free, no sign-up).
   const stats = [
-    { label: "Free Tools", value: tools.length, suffix: "+" },
-    { label: "Blog Articles", value: blogPosts.length, suffix: "+" },
-    { label: "Categories", value: categories.length, suffix: "" },
-    { label: "100% Free", value: 100, suffix: "%" },
+    { label: t("stat.freeTools"), value: tools.length, suffix: "+" },
+    { label: t("stat.categories"), value: categories.length, suffix: "" },
+    { label: t("stat.100free"), value: 100, suffix: "%" },
+    { label: t("stat.noSignup"), value: 100, suffix: "%" },
   ];
 
   return (
@@ -39,45 +48,49 @@ export default function Home() {
             {/* Badge */}
             <div className="mb-6 inline-flex items-center gap-1.5 rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-xs font-medium text-primary badge-pulse">
               <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-              {tools.length}+ Free Online Tools — No Sign-up Required
+              {tools.length}+ {t("hero.badge")} — {t("stat.noSignup")}
             </div>
 
             {/* Title */}
             <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-              Free Online{" "}
+              {t("hero.title1")}{" "}
               <span className="gradient-text">
-                Tools
+                {t("hero.title2")}
               </span>{" "}
               <br className="hidden sm:inline" />
-              That Actually Work
+              {t("hero.title3")}
             </h1>
 
             {/* Description */}
             <p className="mt-6 text-lg text-muted sm:text-xl">
-              No ads. No sign-ups. Just fast, reliable tools for developers, designers, and everyone.
+              {t("hero.subtitle")}
             </p>
 
             {/* Popular quick links */}
             <div className="mt-8 flex flex-wrap items-center justify-center gap-2.5">
-              <span className="text-xs font-medium text-muted">Popular:</span>
+              <span className="text-xs font-medium text-muted">{t("hero.popular")}</span>
               {[
-                { name: "Image Compressor", slug: "image-compressor" },
-                { name: "QR Code Generator", slug: "qr-generator" },
-                { name: "Password Generator", slug: "password-generator" },
-                { name: "Merge PDF", slug: "merge-pdf" },
-              ].map((tool) => (
-                <Link
-                  key={tool.slug}
-                  href={`/tools/${tool.slug}`}
-                  prefetch={false}
-                  className="inline-flex items-center gap-1 rounded-full border border-border bg-background/60 px-3.5 py-1.5 text-xs font-medium text-foreground transition-all hover:border-primary/40 hover:text-primary hover:shadow-sm"
-                >
-                  {tool.name}
-                  <svg className="h-3 w-3 text-muted transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-                  </svg>
-                </Link>
-              ))}
+                "image-compressor",
+                "qr-generator",
+                "password-generator",
+                "merge-pdf",
+              ].map((slug) => {
+                const tool = getToolBySlug(slug);
+                if (!tool) return null;
+                return (
+                  <Link
+                    key={slug}
+                    href={`/tools/${slug}`}
+                    prefetch={false}
+                    className="inline-flex items-center gap-1 rounded-full border border-border bg-background/60 px-3.5 py-1.5 text-xs font-medium text-foreground transition-all hover:border-primary/40 hover:text-primary hover:shadow-sm"
+                  >
+                    {localizeToolName(tool, locale)}
+                    <svg className="h-3 w-3 text-muted transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                    </svg>
+                  </Link>
+                );
+              })}
             </div>
 
             {/* Search — lazy hydrated after first paint */}
@@ -111,20 +124,20 @@ export default function Home() {
             <div>
               <div className="mb-2 inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1 text-xs font-medium text-muted">
                 <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-                Most Used
+                {t("home.popularBadge")}
               </div>
               <h2 className="text-2xl font-bold text-foreground sm:text-3xl">
-                🔥 Popular Tools
+                {t("home.popularTitle")}
               </h2>
               <p className="mt-1 text-sm text-muted">
-                Most used tools by our community
+                {t("home.popularSubtitle")}
               </p>
             </div>
             <Link
               href="/tools"
               className="hidden text-sm font-medium text-primary transition-all hover:text-primary-dark hover:underline sm:inline"
             >
-              View all tools &rarr;
+              {t("home.viewAll")}
             </Link>
           </div>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -137,7 +150,7 @@ export default function Home() {
               href="/tools"
               className="btn-shimmer inline-flex h-10 items-center justify-center rounded-lg bg-primary px-5 text-sm font-semibold text-white transition-all hover:bg-primary-dark"
             >
-              View all tools &rarr;
+              {t("home.viewAll")}
             </Link>
           </div>
         </div>
@@ -150,13 +163,13 @@ export default function Home() {
           <div className="mb-10 text-center">
             <div className="mb-2 inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1 text-xs font-medium text-muted">
               <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-              Categories
+              {t("home.categoriesBadge")}
             </div>
             <h2 className="text-2xl font-bold text-foreground sm:text-3xl">
-              Browse Categories
+              {t("home.categoriesTitle")}
             </h2>
             <p className="mt-1 text-sm text-muted">
-              Find the right tool for your task
+              {t("home.categoriesSubtitle")}
             </p>
           </div>
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-8">
@@ -168,10 +181,10 @@ export default function Home() {
               >
                 <span className="wiggle-target text-3xl">{cat.icon}</span>
                 <span className="text-xs font-semibold text-foreground">
-                  {cat.name}
+                  {t(`cat.${cat.slug}`)}
                 </span>
                 <span className="rounded-full border border-border bg-muted/10 px-2 py-0.5 text-[10px] font-medium text-muted">
-                  {categoryCounts[cat.slug] || 0} tool{(categoryCounts[cat.slug] || 0) !== 1 && "s"}
+                  {categoryCounts[cat.slug] || 0} {t("tools.available")}
                 </span>
               </Link>
             ))}
@@ -188,23 +201,23 @@ export default function Home() {
 
         <div className="relative mx-auto max-w-4xl px-4 text-center sm:px-6">
           <h2 className="text-2xl font-bold text-foreground sm:text-3xl">
-            Ready to Get Started?
+            {t("home.ctaTitle")}
           </h2>
           <p className="mt-3 text-muted max-w-2xl mx-auto">
-            All our tools are free, fast, and private. No sign-up, no uploads to servers — everything runs in your browser.
+            {t("home.ctaSubtitle")}
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <Link
               href="/tools"
               className="btn-shimmer inline-flex h-12 items-center justify-center rounded-xl bg-primary px-8 text-base font-semibold text-white shadow-lg shadow-primary/25 transition-all hover:bg-primary-dark hover:shadow-xl hover:shadow-primary/30"
             >
-              Browse All Tools &rarr;
+              {t("home.ctaBrowse")}
             </Link>
             <Link
               href="/blog"
               className="btn-shimmer inline-flex h-12 items-center justify-center rounded-xl border border-border bg-background px-8 text-base font-semibold text-foreground transition-all hover:border-primary/30 hover:shadow-md"
             >
-              Read Our Blog
+              {t("home.ctaBlog")}
             </Link>
           </div>
         </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import { SITE_URL } from "@/lib/site";
+import { useLanguage } from "@/components/LanguageProvider";
 
 interface ToolShareButtonsProps {
     title: string;
@@ -8,6 +9,7 @@ interface ToolShareButtonsProps {
 }
 
 export default function ToolShareButtons({ title, slug }: ToolShareButtonsProps) {
+    const { t } = useLanguage();
     const url = `${SITE_URL}/tools/${slug}`;
     const encodedUrl = encodeURIComponent(url);
     const encodedTitle = encodeURIComponent(title);
@@ -57,7 +59,7 @@ export default function ToolShareButtons({ title, slug }: ToolShareButtonsProps)
             // brief visual feedback
             const btn = document.activeElement as HTMLElement;
             if (btn) {
-                btn.innerHTML = "✅ Copied!";
+                btn.innerHTML = t("share.copied");
                 setTimeout(() => {
                     btn.innerHTML = `<svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg>`;
                 }, 2000);
@@ -69,17 +71,17 @@ export default function ToolShareButtons({ title, slug }: ToolShareButtonsProps)
 
     return (
         <div className="mt-10">
-            <h3 className="mb-3 text-sm font-semibold text-foreground">Share this tool</h3>
+            <h3 className="mb-3 text-sm font-semibold text-foreground">{t("share.title")}</h3>
             <div className="flex flex-wrap gap-2">
                 <button
                     onClick={copyLink}
                     className="inline-flex h-9 items-center gap-1.5 rounded-lg border border-border px-3.5 text-sm font-medium text-muted transition-colors hover:border-primary hover:text-primary"
-                    title="Copy link"
+                    title={t("share.copy")}
                 >
                     <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
                     </svg>
-                    Copy
+                    {t("share.copy")}
                 </button>
                 {shareLinks.map((link) => (
                     <a
@@ -88,7 +90,7 @@ export default function ToolShareButtons({ title, slug }: ToolShareButtonsProps)
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex h-9 items-center gap-1.5 rounded-lg border border-border px-3.5 text-sm font-medium text-muted transition-colors hover:border-primary hover:text-primary"
-                        title={`Share on ${link.name}`}
+                        title={t("share.on").replace("{name}", link.name)}
                     >
                         {link.icon}
                         {link.name}

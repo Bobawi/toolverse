@@ -3,6 +3,9 @@
 import { useState, useRef, useEffect, useMemo, useCallback } from "react";
 import Link from "next/link";
 import { searchIndex } from "@/data/search-index";
+import { useLanguage } from "@/components/LanguageProvider";
+import { localizeToolName, localizeToolDescription, localizeCategory } from "@/lib/localize";
+import { getToolBySlug } from "@/data/tools";
 
 interface SearchResult {
     slug: string;
@@ -36,30 +39,41 @@ export default function SearchTools() {
     const inputRef = useRef<HTMLInputElement>(null);
     const wrapperRef = useRef<HTMLDivElement>(null);
     const listRef = useRef<HTMLDivElement>(null);
+    const { t, locale } = useLanguage();
 
     const results = useMemo<SearchResult[]>(() => {
         const q = query.trim().toLowerCase();
         if (!q) return [];
         return searchIndex
-            .filter(
-                (t) =>
-                    t.name.toLowerCase().includes(q) ||
-                    t.description.toLowerCase().includes(q) ||
-                    t.category.toLowerCase().includes(q)
-            )
+            .filter((t) => {
+                const fullTool = getToolBySlug(t.slug);
+                const name = fullTool ? localizeToolName(fullTool, locale) : t.name;
+                const desc = fullTool ? localizeToolDescription(fullTool, locale) : t.description;
+                const cat = fullTool ? localizeCategory(fullTool, locale) : t.category;
+                return (
+                    name.toLowerCase().includes(q) ||
+                    desc.toLowerCase().includes(q) ||
+                    cat.toLowerCase().includes(q)
+                );
+            })
             .slice(0, 8);
-    }, [query]);
+    }, [query, locale]);
 
     const totalMatches = useMemo(() => {
         const q = query.trim().toLowerCase();
         if (!q) return 0;
-        return searchIndex.filter(
-            (t) =>
-                t.name.toLowerCase().includes(q) ||
-                t.description.toLowerCase().includes(q) ||
-                t.category.toLowerCase().includes(q)
-        ).length;
-    }, [query]);
+        return searchIndex.filter((t) => {
+            const fullTool = getToolBySlug(t.slug);
+            const name = fullTool ? localizeToolName(fullTool, locale) : t.name;
+            const desc = fullTool ? localizeToolDescription(fullTool, locale) : t.description;
+            const cat = fullTool ? localizeCategory(fullTool, locale) : t.category;
+            return (
+                name.toLowerCase().includes(q) ||
+                desc.toLowerCase().includes(q) ||
+                cat.toLowerCase().includes(q)
+            );
+        }).length;
+    }, [query, locale]);
 
     useEffect(() => {
         function handleClickOutside(e: MouseEvent) {
@@ -150,7 +164,7 @@ export default function SearchTools() {
                     }}
                     onFocus={() => setIsOpen(true)}
                     onKeyDown={handleKeyDown}
-                    placeholder="Search tools..."
+                    placeholder={t("nav.search")}
                     aria-label="Search tools"
                     aria-expanded={isOpen}
                     role="combobox"
@@ -185,37 +199,42 @@ export default function SearchTools() {
                                 className="max-h-80 overflow-y-auto py-2"
                                 role="listbox"
                             >
-                                {results.map((tool, index) => (
-                                    <Link
-                                        key={tool.slug}
-                                        href={`/tools/${tool.slug}`}
-                                        prefetch={false}
-                                        onClick={closeAndReset}
-                                        onMouseEnter={() => setActiveIndex(index)}
-                                        data-result-index={index}
-                                        role="option"
-                                        aria-selected={activeIndex === index}
-                                        className={`flex items-center gap-3 px-4 py-2.5 transition-colors ${activeIndex === index
-                                            ? "bg-primary/10"
-                                            : "hover:bg-muted/10"
-                                            }`}
-                                    >
-                                        <span className="text-lg">{tool.icon}</span>
-                                        <div className="min-w-0 flex-1">
-                                            <p className="truncate text-sm font-medium text-foreground">
-                                                {highlightMatch(tool.name, query)}
-                                            </p>
-                                            <p className="truncate text-xs capitalize text-muted">
-                                                {tool.category}
-                                            </p>
-                                        </div>
-                                        {activeIndex === index && (
-                                            <span className="shrink-0 text-xs text-muted">
-                                                ↵
-                                            </span>
-                                        )}
-                                    </Link>
-                                ))}
+                                {results.map((tool, index) => {
+                                    const fullTool = getToolBySlug(tool.slug);
+                                    const displayName = fullTool ? localizeToolName(fullTool, locale) : tool.name;
+                                    const displayCat = fullTool ? localizeCategory(fullTool, locale) : tool.category;
+                                    return (
+                                        <Link
+                                            key={tool.slug}
+                                            href={`/tools/${tool.slug}`}
+                                            prefetch={false}
+                                            onClick={closeAndReset}
+                                            onMouseEnter={() => setActiveIndex(index)}
+                                            data-result-index={index}
+                                            role="option"
+                                            aria-selected={activeIndex === index}
+                                            className={`flex items-center gap-3 px-4 py-2.5 transition-colors ${activeIndex === index
+                                                ? "bg-primary/10"
+                                                : "hover:bg-muted/10"
+                                                }`}
+                                        >
+                                            <span className="text-lg">{tool.icon}</span>
+                                            <div className="min-w-0 flex-1">
+                                                <p className="truncate text-sm font-medium text-foreground">
+                                                    {highlightMatch(displayName, query)}
+                                                </p>
+                                                <p className="truncate text-xs capitalize text-muted">
+                                                    {displayCat}
+                                                </p>
+                                            </div>
+                                            {activeIndex === index && (
+                                                <span className="shrink-0 text-xs text-muted">
+                                                    ↵
+                                                </span>
+                                            )}
+                                        </Link>
+                                    );
+                                })}
                             </div>
                             {totalMatches > results.length && (
                                 <Link
@@ -223,13 +242,13 @@ export default function SearchTools() {
                                     onClick={closeAndReset}
                                     className="block border-t border-border px-4 py-2.5 text-center text-xs font-medium text-primary transition-colors hover:bg-muted/10"
                                 >
-                                    View all {totalMatches} results &rarr;
+                                    {t("search.viewAll").replace("{n}", String(totalMatches))}
                                 </Link>
                             )}
                         </>
                     ) : (
                         <div className="px-4 py-8 text-center text-sm text-muted">
-                            No tools found for &ldquo;{query}&rdquo;
+                            {t("search.noFound").replace("{q}", query)}
                         </div>
                     )}
                 </div>

@@ -1,25 +1,31 @@
+"use client";
+
 import Link from "next/link";
-import { ReactNode } from "react";
+import { Tool } from "@/types";
+import { useLanguage } from "@/components/LanguageProvider";
+import { localizeToolName, localizeToolDescription } from "@/lib/localize";
 import ToolShareButtons from "@/components/tool-layout/ToolShareButtons";
 import { SITE_URL } from "@/lib/site";
 
 interface ToolLayoutProps {
-    name: string;
+    tool: Tool;
     slug: string;
-    description: string;
     icon: string;
     bgColor: string;
-    children: ReactNode;
+    children: React.ReactNode;
 }
 
 export default function ToolLayout({
-    name,
+    tool,
     slug,
-    description,
     icon,
     bgColor,
     children,
 }: ToolLayoutProps) {
+    const { t, locale } = useLanguage();
+    const name = localizeToolName(tool, locale);
+    const description = localizeToolDescription(tool, locale);
+
     const breadcrumbData = {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
@@ -76,11 +82,11 @@ export default function ToolLayout({
                     className="mb-6 flex items-center gap-2 text-sm text-muted"
                 >
                     <Link href="/" className="hover:text-foreground">
-                        Home
+                        {t("nav.home")}
                     </Link>
                     <span>/</span>
                     <Link href="/tools" className="hover:text-foreground">
-                        Tools
+                        {t("nav.tools")}
                     </Link>
                     <span>/</span>
                     <span className="text-foreground" aria-current="page">
