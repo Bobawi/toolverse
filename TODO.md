@@ -1,26 +1,16 @@
-# ToolVerse Arabic Deep Translation — TODO
+# ToolVerse Design Improvements — TODO
 
-## Phase 1: UI Shell
-- [x] Add new UI translation keys (section headings, badges, footer categories, homepage, tool detail headings) to `lib/i18n.ts` (en/fr/ar)
-- [x] Wire homepage `app/page.tsx` hardcoded text through `t()`
-- [x] Wire `components/layout/Footer.tsx` categories through `t()`
-- [x] Wire `components/tools/ToolCard.tsx` badges/tags through `t()`
-- [x] Localize category names (`data/categories.ts` + helper)
+## Phase 1: Homepage Enhancements
+- [x] Add translated UI keys for new sections (How It Works, Testimonials, Hero CTA, Trust badges) to `lib/i18n.ts` (en/fr/ar)
+- [x] Improve Hero: add main CTA button + secondary button + trust badges
+- [x] Add "How It Works" section (3 steps)
+- [x] Add "Testimonials / Social Proof" section
 
-## Phase 2: Tool Deep Translation
-- [x] Create `data/tool-translations.ts` with Arabic name/description/features/faq/howToUse for all 50+ tools
-- [x] Add `localizeTool(tool, locale)` helper
-- [x] Wire `components/tools/ToolCard.tsx` to localized names
-- [x] Wire `app/tools/page.tsx` category + tool names
-- [x] Wire `app/page.tsx` popular tools + categories
+## Phase 2: Components Enhancements
+- [x] Improve ToolCard (add category label, better hover)
+- [x] Improve Footer (add popular tools links, newsletter/subscribe section)
 
-## Phase 3: Tool Detail Pages
-- [x] Wire `components/tool-layout/ToolFeatures.tsx`, `ToolHowToUse.tsx`, `ToolFAQ.tsx` localized via `tool` prop
-- [x] Update `app/tools/[slug]/page.tsx` to pass `tool` to localized layout components
-- [x] Localize "Features", "How to Use", "Frequently Asked Questions" headings
-- [x] Localize `ToolRelatedTools` subtitle via `related.subtitle` key
-- [x] Localize `ToolShareButtons` (share.title, share.copy, share.copied, share.on keys)
-
-## Phase 4: Verification
-- [ ] TypeScript build passes
-- [ ] RTL rendering check
+## Phase 3: Verification
+- [x] TypeScript build passes
+- [x] RTL rendering check
+- [x] Commit and push changes

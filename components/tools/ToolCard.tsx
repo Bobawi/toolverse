@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { Tool } from "@/types";
 import { useLanguage } from "@/components/LanguageProvider";
-import { localizeToolName, localizeToolDescription } from "@/lib/localize";
+import { localizeToolName, localizeToolDescription, localizeCategory } from "@/lib/localize";
 
 const badgeConfig: Record<string, { labelKey: string; className: string }> = {
     popular: { labelKey: "badge.popular", className: "bg-amber-500/15 text-amber-600 border-amber-500/30" },
@@ -70,7 +70,10 @@ export default function ToolCard({ tool }: { tool: Tool }) {
             </div>
 
             {/* Info tags */}
-            <div className="relative mt-4 flex flex-wrap gap-1.5">
+            <div className="relative mt-4 flex flex-wrap items-center gap-1.5">
+                <span className="rounded-md border border-primary/20 bg-primary/5 px-2 py-0.5 text-[10px] font-medium text-primary">
+                    {localizeCategory(tool, locale)}
+                </span>
                 <span className="rounded-md border border-border bg-muted/10 px-2 py-0.5 text-[10px] font-medium text-muted">
                     {t("card.browserBased")}
                 </span>

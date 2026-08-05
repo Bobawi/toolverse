@@ -92,6 +92,38 @@ export const translations: Record<
         "card.free": "🆓 Free",
         "card.instant": "⚡ Instant",
 
+        // Hero CTA
+        "hero.ctaPrimary": "🚀 Explore All Tools",
+        "hero.ctaSecondary": "Browse by Category",
+        "hero.trust.private": "🔒 100% Private",
+        "hero.trust.secure": "🛡 Secure",
+        "hero.trust.free": "💯 Free Forever",
+        "hero.trust.noAds": "🚫 No Ads",
+        "hero.trust.noSignup": "📝 No Sign-up",
+
+        // How It Works
+        "how.title": "How It Works",
+        "how.subtitle": "Get started in 3 simple steps",
+        "how.step1.title": "Choose a Tool",
+        "how.step1.desc": "Browse our 50+ free tools or search for exactly what you need.",
+        "how.step2.title": "Use It Online",
+        "how.step2.desc": "Everything runs directly in your browser. No downloads, no installs.",
+        "how.step3.title": "Get Your Result",
+        "how.step3.desc": "Download or copy your result instantly — free, private, and unlimited.",
+
+        // Testimonials
+        "testi.title": "Loved by Users",
+        "testi.subtitle": "Trusted by thousands of people every day",
+        "testi.1.quote": "ToolVerse saved me so much time. The image compressor is amazing and completely free!",
+        "testi.1.name": "Yassine B.",
+        "testi.1.role": "Freelance Designer",
+        "testi.2.quote": "Finally a tool site without ads and sign-ups. Everything just works in the browser.",
+        "testi.2.name": "Salma A.",
+        "testi.2.role": "Student",
+        "testi.3.quote": "I use the QR and PDF tools daily for my business. Fast, reliable, and private.",
+        "testi.3.name": "Omar T.",
+        "testi.3.role": "Small Business Owner",
+
         // Tool detail sections
         "tool.features": "Features",
         "tool.howToUse": "How to Use",
@@ -120,6 +152,12 @@ export const translations: Record<
         "footer.about": "About Us",
         "footer.contact": "Contact",
         "footer.rights": "All rights reserved.",
+        "footer.popular": "Popular Tools",
+        "footer.newsletter.title": "Stay Updated",
+        "footer.newsletter.desc": "Get new tools and tips. No spam, unsubscribe anytime.",
+        "footer.newsletter.placeholder": "Your email address",
+        "footer.newsletter.button": "Subscribe",
+        "footer.newsletter.success": "✅ Thanks! You're subscribed.",
     },
     fr: {
         // Nav
@@ -202,6 +240,38 @@ export const translations: Record<
         "card.free": "🆓 Gratuit",
         "card.instant": "⚡ Instantané",
 
+        // Hero CTA
+        "hero.ctaPrimary": "🚀 Explorer tous les outils",
+        "hero.ctaSecondary": "Parcourir par catégorie",
+        "hero.trust.private": "🔒 100% Privé",
+        "hero.trust.secure": "🛡 Sécurisé",
+        "hero.trust.free": "💯 Gratuit pour toujours",
+        "hero.trust.noAds": "🚫 Sans pubs",
+        "hero.trust.noSignup": "📝 Sans inscription",
+
+        // How It Works
+        "how.title": "Comment ça marche",
+        "how.subtitle": "Commencez en 3 étapes simples",
+        "how.step1.title": "Choisissez un outil",
+        "how.step1.desc": "Parcourez nos 50+ outils gratuits ou recherchez exactement ce dont vous avez besoin.",
+        "how.step2.title": "Utilisez-le en ligne",
+        "how.step2.desc": "Tout fonctionne directement dans votre navigateur. Aucun téléchargement, aucune installation.",
+        "how.step3.title": "Obtenez votre résultat",
+        "how.step3.desc": "Téléchargez ou copiez votre résultat instantanément — gratuit, privé et illimité.",
+
+        // Testimonials
+        "testi.title": "Adoré par les utilisateurs",
+        "testi.subtitle": "Fait confiance à des milliers de personnes chaque jour",
+        "testi.1.quote": "ToolVerse m'a fait gagner un temps fou. Le compresseur d'images est incroyable et totalement gratuit !",
+        "testi.1.name": "Yassine B.",
+        "testi.1.role": "Designer freelance",
+        "testi.2.quote": "Enfin un site d'outils sans pubs et sans inscription. Tout fonctionne dans le navigateur.",
+        "testi.2.name": "Salma A.",
+        "testi.2.role": "Étudiante",
+        "testi.3.quote": "J'utilise les outils QR et PDF tous les jours pour mon entreprise. Rapides, fiables et privés.",
+        "testi.3.name": "Omar T.",
+        "testi.3.role": "Propriétaire de PME",
+
         // Tool detail sections
         "tool.features": "Caractéristiques",
         "tool.howToUse": "Comment utiliser",
@@ -230,6 +300,12 @@ export const translations: Record<
         "footer.about": "À propos",
         "footer.contact": "Contact",
         "footer.rights": "Tous droits réservés.",
+        "footer.popular": "Outils populaires",
+        "footer.newsletter.title": "Restez informé",
+        "footer.newsletter.desc": "Recevez les nouveaux outils et astuces. Pas de spam, désinscription à tout moment.",
+        "footer.newsletter.placeholder": "Votre adresse e-mail",
+        "footer.newsletter.button": "S'abonner",
+        "footer.newsletter.success": "✅ Merci ! Vous êtes abonné.",
     },
     ar: {
         // Nav
@@ -312,6 +388,38 @@ export const translations: Record<
         "card.free": "🆓 مجاني",
         "card.instant": "⚡ فوري",
 
+        // Hero CTA
+        "hero.ctaPrimary": "🚀 استكشف كل الأدوات",
+        "hero.ctaSecondary": "تصفح حسب الفئة",
+        "hero.trust.private": "🔒 خاص 100%",
+        "hero.trust.secure": "🛡 آمن",
+        "hero.trust.free": "💯 مجاني للأبد",
+        "hero.trust.noAds": "🚫 بدون إعلانات",
+        "hero.trust.noSignup": "📝 بدون تسجيل",
+
+        // How It Works
+        "how.title": "كيف يعمل الموقع",
+        "how.subtitle": "ابدأ في 3 خطوات بسيطة",
+        "how.step1.title": "اختر أداة",
+        "how.step1.desc": "تصفح أكثر من 50 أداة مجانية أو ابحث عن ما تحتاجه بالضبط.",
+        "how.step2.title": "استخدمها عبر الإنترنت",
+        "how.step2.desc": "كل شيء يعمل مباشرة في متصفحك. بدون تحميل، بدون تثبيت.",
+        "how.step3.title": "احصل على نتيجتك",
+        "how.step3.desc": "حمّل أو انسخ نتيجتك فوراً — مجاني، خاص، وبدون حدود.",
+
+        // Testimonials
+        "testi.title": "محبوب لدى المستخدمين",
+        "testi.subtitle": "يثق بنا آلاف الأشخاص كل يوم",
+        "testi.1.quote": "وفر لي ToolVerse الكثير من الوقت. أداة ضغط الصور مذهلة ومجانية تماماً!",
+        "testi.1.name": "ياسين ب.",
+        "testi.1.role": "مصمم حر",
+        "testi.2.quote": "أخيراً موقع أدوات بدون إعلانات وبدون تسجيل. كل شيء يعمل في المتصفح.",
+        "testi.2.name": "سلمى أ.",
+        "testi.2.role": "طالبة",
+        "testi.3.quote": "أستخدم أدوات QR وPDF يومياً في عملي. سريعة وموثوقة وخاصة.",
+        "testi.3.name": "عمر ت.",
+        "testi.3.role": "صاحب مشروع صغير",
+
         // Tool detail sections
         "tool.features": "المميزات",
         "tool.howToUse": "طريقة الاستخدام",
@@ -340,6 +448,12 @@ export const translations: Record<
         "footer.about": "من نحن",
         "footer.contact": "اتصل بنا",
         "footer.rights": "جميع الحقوق محفوظة.",
+        "footer.popular": "الأدوات الشائعة",
+        "footer.newsletter.title": "ابقَ على اطلاع",
+        "footer.newsletter.desc": "احصل على أدوات ونصائح جديدة. بدون إزعاج، يمكنك إلغاء الاشتراك في أي وقت.",
+        "footer.newsletter.placeholder": "بريدك الإلكتروني",
+        "footer.newsletter.button": "اشترك",
+        "footer.newsletter.success": "✅ شكراً! تم اشتراكك.",
     },
 };
 

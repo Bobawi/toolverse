@@ -66,8 +66,29 @@ export default function Home() {
               {t("hero.subtitle")}
             </p>
 
+            {/* CTA buttons */}
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+              <Link
+                href="/tools"
+                prefetch={false}
+                className="btn-shimmer inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-primary px-8 text-base font-semibold text-white shadow-lg shadow-primary/25 transition-all hover:bg-primary-dark hover:shadow-xl hover:shadow-primary/30"
+              >
+                {t("hero.ctaPrimary")}
+                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                </svg>
+              </Link>
+              <Link
+                href="/tools"
+                prefetch={false}
+                className="btn-shimmer inline-flex h-12 items-center justify-center gap-2 rounded-xl border border-border bg-background px-8 text-base font-semibold text-foreground transition-all hover:border-primary/30 hover:shadow-md"
+              >
+                {t("hero.ctaSecondary")}
+              </Link>
+            </div>
+
             {/* Popular quick links */}
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-2.5">
+            <div className="mt-6 flex flex-wrap items-center justify-center gap-2.5">
               <span className="text-xs font-medium text-muted">{t("hero.popular")}</span>
               {[
                 "image-compressor",
@@ -98,6 +119,23 @@ export default function Home() {
               <SearchToolsLazy />
             </div>
 
+            {/* Trust badges */}
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+              {[
+                t("hero.trust.free"),
+                t("hero.trust.noAds"),
+                t("hero.trust.private"),
+                t("hero.trust.noSignup"),
+              ].map((badge) => (
+                <span
+                  key={badge}
+                  className="inline-flex items-center rounded-full border border-border bg-background/60 px-3 py-1 text-xs font-medium text-muted"
+                >
+                  {badge}
+                </span>
+              ))}
+            </div>
+
             {/* Stats — static (no JS counter, faster LCP) */}
             <div className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-4">
               {stats.map((stat) => (
@@ -113,6 +151,47 @@ export default function Home() {
                 </div>
               ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ============ HOW IT WORKS ============ */}
+      <section className="relative overflow-hidden border-t border-border bg-background py-16 sm:py-20">
+        <div className="absolute inset-0 dots-pattern opacity-40" />
+        <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
+          <div className="mb-12 text-center">
+            <div className="mb-2 inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1 text-xs font-medium text-muted">
+              <span className="h-1.5 w-1.5 rounded-full bg-secondary" />
+              {t("how.subtitle")}
+            </div>
+            <h2 className="text-2xl font-bold text-foreground sm:text-3xl">
+              {t("how.title")}
+            </h2>
+          </div>
+          <div className="grid gap-6 sm:grid-cols-3">
+            {[
+              { icon: "🔍", titleKey: "how.step1.title", descKey: "how.step1.desc", num: "1" },
+              { icon: "⚡", titleKey: "how.step2.title", descKey: "how.step2.desc", num: "2" },
+              { icon: "🎉", titleKey: "how.step3.title", descKey: "how.step3.desc", num: "3" },
+            ].map((step) => (
+              <div
+                key={step.num}
+                className="card-glow relative rounded-xl border border-border bg-background p-6 text-center"
+              >
+                <div className="absolute -top-3 left-1/2 flex h-7 w-7 -translate-x-1/2 items-center justify-center rounded-full bg-gradient-to-br from-primary to-secondary text-xs font-bold text-white">
+                  {step.num}
+                </div>
+                <div className="mx-auto mb-3 mt-2 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-2xl">
+                  {step.icon}
+                </div>
+                <h3 className="text-base font-semibold text-foreground">
+                  {t(step.titleKey)}
+                </h3>
+                <p className="mt-2 text-sm text-muted leading-relaxed">
+                  {t(step.descKey)}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -187,6 +266,54 @@ export default function Home() {
                   {categoryCounts[cat.slug] || 0} {t("tools.available")}
                 </span>
               </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ============ TESTIMONIALS ============ */}
+      <section className="relative overflow-hidden border-t border-border bg-background py-16 sm:py-20">
+        <div className="absolute inset-0 grid-pattern opacity-40" />
+        <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
+          <div className="mb-12 text-center">
+            <div className="mb-2 inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1 text-xs font-medium text-muted">
+              <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+              {t("testi.subtitle")}
+            </div>
+            <h2 className="text-2xl font-bold text-foreground sm:text-3xl">
+              {t("testi.title")}
+            </h2>
+          </div>
+          <div className="grid gap-6 sm:grid-cols-3">
+            {[1, 2, 3].map((i) => (
+              <div
+                key={i}
+                className="card-glow flex flex-col rounded-xl border border-border bg-background p-6"
+              >
+                <div className="mb-4 flex gap-0.5 text-accent">
+                  {Array.from({ length: 5 }).map((_, s) => (
+                    <svg key={s} className="h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  ))}
+                </div>
+                <p className="flex-1 text-sm text-foreground leading-relaxed">
+                  &ldquo;{t(`testi.${i}.quote`)}&rdquo;
+                </p>
+                <div className="mt-4 flex items-center gap-3 border-t border-border pt-4">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-primary/20 to-secondary/20 text-sm font-bold text-primary">
+                    {t(`testi.${i}.name`).charAt(0)}
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-foreground">
+                      {t(`testi.${i}.name`)}
+                    </p>
+                    <p className="text-xs text-muted">
+                      {t(`testi.${i}.role`)}
+                    </p>
+                  </div>
+                </div>
+              </div>
             ))}
           </div>
         </div>
