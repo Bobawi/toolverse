@@ -3,8 +3,9 @@
 import Link from "next/link";
 import { useState } from "react";
 import { useLanguage } from "@/components/LanguageProvider";
-import { getPopularTools } from "@/data/tools";
+import { getToolBySlug } from "@/data/tools";
 import { localizeToolName } from "@/lib/localize";
+import type { Tool } from "@/types";
 
 export default function Footer() {
     const currentYear = new Date().getFullYear();
@@ -12,7 +13,16 @@ export default function Footer() {
     const [email, setEmail] = useState("");
     const [subscribed, setSubscribed] = useState(false);
 
-    const popularTools = getPopularTools().slice(0, 4);
+// ToolBurst-style footer columns, mapped to real tool slugs
+    const financeTools = ["loan-calculator", "tip-calculator", "vat-calculator", "currency-converter"]
+        .map((s): Tool | null => getToolBySlug(s) ?? null)
+        .filter((t): t is Tool => t !== null);
+    const timeTools = ["date-calculator", "stopwatch", "countdown-timer", "age-calculator"]
+        .map((s): Tool | null => getToolBySlug(s) ?? null)
+        .filter((t): t is Tool => t !== null);
+    const imageTools = ["image-compressor", "image-to-pdf", "webp-to-png", "qr-generator"]
+        .map((s): Tool | null => getToolBySlug(s) ?? null)
+        .filter((t): t is Tool => t !== null);
 
     const handleSubscribe = (e: React.FormEvent) => {
         e.preventDefault();
@@ -108,21 +118,16 @@ export default function Footer() {
 
                     <div>
                         <h3 className="mb-3 text-sm font-semibold text-foreground">
-                            {t("footer.categories")}
+                            {t("footer.finance")}
                         </h3>
                         <ul className="space-y-2">
-                            {[
-                                { label: t("cat.image"), href: "/categories/image" },
-                                { label: t("cat.pdf"), href: "/categories/pdf" },
-                                { label: t("cat.developer"), href: "/categories/developer" },
-                                { label: t("cat.calculators"), href: "/categories/calculators" },
-                            ].map((item) => (
-                                <li key={item.href}>
+                            {financeTools.map((tool) => tool && (
+                                <li key={tool.slug}>
                                     <Link
-                                        href={item.href}
+                                        href={`/tools/${tool.slug}`}
                                         className="text-sm text-muted transition-colors hover:text-foreground"
                                     >
-                                        {item.label}
+                                        {localizeToolName(tool, locale)}
                                     </Link>
                                 </li>
                             ))}
@@ -131,10 +136,28 @@ export default function Footer() {
 
                     <div>
                         <h3 className="mb-3 text-sm font-semibold text-foreground">
-                            {t("footer.popular")}
+                            {t("footer.time")}
                         </h3>
                         <ul className="space-y-2">
-                            {popularTools.map((tool) => (
+                            {timeTools.map((tool) => tool && (
+                                <li key={tool.slug}>
+                                    <Link
+                                        href={`/tools/${tool.slug}`}
+                                        className="text-sm text-muted transition-colors hover:text-foreground"
+                                    >
+                                        {localizeToolName(tool, locale)}
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 className="mb-3 text-sm font-semibold text-foreground">
+                            {t("footer.image")}
+                        </h3>
+                        <ul className="space-y-2">
+                            {imageTools.map((tool) => tool && (
                                 <li key={tool.slug}>
                                     <Link
                                         href={`/tools/${tool.slug}`}
