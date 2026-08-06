@@ -2,8 +2,9 @@
 
 ## AdSense Ready (inactive)
 - [x] Create `components/ads/AdSlot.tsx` (client component, disabled by default via env flag)
-- [x] Add AdSense script loader component (only loads when `NEXT_PUBLIC_ADSENSE_ENABLED=true`)
-- [x] Place `AdSlot` in tool pages and blog pages (dormant until enabled)
+- [x] Add AdSense script loader component
+- [x] Place `AdSlot` in tool pages and blog pages
+- [x] Activate with client ID `ca-pub-9740076187901674` (enabled by default)
 
 ## Moroccan SEO Blog Posts
 - [x] Add blog post: `calculer-impot-revenu-maroc` (income tax Morocco, FR)

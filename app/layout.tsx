@@ -157,6 +157,12 @@ export default function RootLayout({
           content="4yGTyFSvFiMqYJz6BpZ-v4olh82Msz6ITaM6e9qKPac"
         />
 
+        {/* Google AdSense Site Verification */}
+        <meta
+          name="google-adsense-account"
+          content="ca-pub-9740076187901674"
+        />
+
         {/* Preconnect for analytics — actual script loads on first interaction (AnalyticsLoader) */}
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://www.google-analytics.com" crossOrigin="anonymous" />
@@ -213,7 +219,7 @@ export default function RootLayout({
             <Footer />
           </LanguageProvider>
         </ThemeProvider>
-<AdSenseLoader />
+        <AdSenseLoader />
         <AnalyticsLoader />
         <SpeedInsights />
       </body>
