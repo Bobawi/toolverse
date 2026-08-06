@@ -12,8 +12,9 @@ import { useEffect } from "react";
  * The AdSense script MUST be loaded only once per page — this component
  * guards against duplicate injection.
  */
-const ADSENSE_ENABLED = process.env.NEXT_PUBLIC_ADSENSE_ENABLED === "true";
-const ADSENSE_CLIENT = process.env.NEXT_PUBLIC_ADSENSE_CLIENT ?? "";
+const ADSENSE_ENABLED = process.env.NEXT_PUBLIC_ADSENSE_ENABLED !== "false";
+const ADSENSE_CLIENT =
+    process.env.NEXT_PUBLIC_ADSENSE_CLIENT ?? "ca-pub-9740076187901674";
 
 declare global {
     interface Window {

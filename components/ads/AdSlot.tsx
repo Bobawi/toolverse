@@ -21,7 +21,8 @@ interface AdSlotProps {
     className?: string;
 }
 
-const ADSENSE_ENABLED = process.env.NEXT_PUBLIC_ADSENSE_ENABLED === "true";
+const ADSENSE_ENABLED = process.env.NEXT_PUBLIC_ADSENSE_ENABLED !== "false";
+const ADSENSE_CLIENT_DEFAULT = "ca-pub-9740076187901674";
 
 // Minimal global type so we avoid `any`.
 declare global {
@@ -35,7 +36,7 @@ export default function AdSlot({
     format = "auto",
     className = "",
 }: AdSlotProps) {
-    const client = process.env.NEXT_PUBLIC_ADSENSE_CLIENT ?? "";
+    const client = process.env.NEXT_PUBLIC_ADSENSE_CLIENT ?? ADSENSE_CLIENT_DEFAULT;
     const ref = useRef<HTMLModElement>(null);
 
     // Always call the hook (before any conditional return) to satisfy React rules.
