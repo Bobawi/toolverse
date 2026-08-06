@@ -53,6 +53,14 @@ export default function CurrencyConverter() {
         return val.toLocaleString("en-US", { maximumFractionDigits: 2 }) + " " + code;
     }, []);
 
+    // Quick conversion presets for Moroccan Dirham (MAD)
+    const quickPairs: { label: string; from: string; to: string }[] = [
+        { label: "EUR → MAD", from: "EUR", to: "MAD" },
+        { label: "USD → MAD", from: "USD", to: "MAD" },
+        { label: "MAD → EUR", from: "MAD", to: "EUR" },
+        { label: "MAD → USD", from: "MAD", to: "USD" },
+    ];
+
     return (
         <div className="space-y-6">
             <div className="grid gap-4 sm:grid-cols-3">
@@ -102,6 +110,23 @@ export default function CurrencyConverter() {
                 </div>
             </div>
 
+            {/* Quick MAD conversion buttons */}
+            <div className="flex flex-wrap gap-2">
+                {quickPairs.map((pair) => (
+                    <button
+                        key={pair.label}
+                        onClick={() => { setFrom(pair.from); setTo(pair.to); }}
+                        className={`rounded-lg border px-3 py-1.5 text-xs font-medium transition-colors ${
+                            from === pair.from && to === pair.to
+                                ? "border-primary/40 bg-primary/10 text-primary"
+                                : "border-border text-muted hover:border-primary/30 hover:text-foreground"
+                        }`}
+                    >
+                        {pair.label}
+                    </button>
+                ))}
+            </div>
+
             <div className="rounded-lg border border-border bg-background p-5 text-center">
                 <p className="text-3xl font-bold text-primary">
                     {format(num, from)} = {format(result, to)}
@@ -113,3 +138,4 @@ export default function CurrencyConverter() {
         </div>
     );
 }
+

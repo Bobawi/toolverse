@@ -5,6 +5,7 @@ import Footer from "@/components/layout/Footer";
 import ThemeProvider from "@/components/ThemeProvider";
 import LanguageProvider from "@/components/LanguageProvider";
 import AnalyticsLoader from "@/components/AnalyticsLoader";
+import AdSenseLoader from "@/components/ads/AdSenseLoader";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { SITE_URL } from "@/lib/site";
 import "./globals.css";
@@ -128,6 +129,12 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: SITE_URL,
+    languages: {
+      en: SITE_URL,
+      fr: SITE_URL,
+      ar: SITE_URL,
+      "x-default": SITE_URL,
+    },
   },
   metadataBase: new URL(SITE_URL),
   manifest: "/manifest.webmanifest",
@@ -194,7 +201,7 @@ export default function RootLayout({
                 },
                 "query-input": "required name=search_term_string",
               },
-}),
+            }),
           }}
         />
       </head>
@@ -206,6 +213,7 @@ export default function RootLayout({
             <Footer />
           </LanguageProvider>
         </ThemeProvider>
+<AdSenseLoader />
         <AnalyticsLoader />
         <SpeedInsights />
       </body>

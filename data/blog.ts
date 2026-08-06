@@ -2145,6 +2145,177 @@ export const blogPosts: BlogPost[] = [
             },
         ],
 },
+{
+        slug: "calculer-impot-revenu-maroc",
+        title: "Calculer l'Impôt sur le Revenu au Maroc (IR 2025)",
+        description:
+            "Apprenez à calculer l'Impôt sur le Revenu (IR) au Maroc pour 2025 : barèmes progressifs, déductions, abattement professionnel et charges de famille. Guide complet avec exemples concrets en dirhams.",
+        date: "2025-10-25",
+        readTime: "7 min read",
+        category: "Calculators",
+        icon: "🧮",
+        tags: ["impot revenu maroc", "ir maroc", "calcul ir", "impots maroc", "dgi maroc", "taux impot maroc"],
+        seo: {
+            title: "Calculer l'Impôt sur le Revenu au Maroc (IR 2025) : Guide Complet",
+            description:
+                "Barème de l'Impôt sur le Revenu (IR) au Maroc 2025 : taux progressifs de 0% à 38%, abattement professionnel de 35%, déductions familiales. Exemples de calcul détaillés en DH.",
+        },
+        sections: [
+            {
+                heading: "Qu'est-ce que l'Impôt sur le Revenu (IR) au Maroc ?",
+                paragraphs: [
+                    "L'Impôt sur le Revenu (IR) est un impôt direct prélevé annuellement sur les revenus des personnes physiques au Maroc. Il concerne les salaires, les revenus professionnels, les revenus fonciers, ainsi que les revenus de capitaux mobiliers.",
+                    "Pour les salariés, l'IR est prélevé à la source par l'employeur chaque mois, puis régularisé annuellement. Comprendre le barème et les déductions est essentiel pour savoir combien vous payez et vérifier que votre fiche de paie est correcte.",
+                ],
+            },
+            {
+                heading: "Le Barème Progressif de l'IR 2025 au Maroc",
+                paragraphs: [
+                    "Le barème de l'IR au Maroc est progressif : plus votre revenu net imposable est élevé, plus le taux appliqué augmente. Voici le barème en vigueur pour 2024-2025 (en dirhams annuels) :",
+                ],
+                list: [
+                    "0 à 40 000 DH : 0% (exonéré)",
+                    "40 001 à 60 000 DH : 10%",
+                    "60 001 à 80 000 DH : 20%",
+                    "80 001 à 100 000 DH : 30%",
+                    "100 001 à 180 000 DH : 34%",
+                    "Au-delà de 180 000 DH : 38%",
+                ],
+                tip: "Le barème est appliqué par tranches : chaque portion de revenu est taxée au taux de sa tranche, pas au taux global. C'est ce qu'on appelle un impôt progressif.",
+            },
+            {
+                heading: "Comment Calculer l'IR sur un Salaire",
+                paragraphs: [
+                    "Pour un salarié, le calcul se fait en plusieurs étapes. Prenons l'exemple d'un salaire brut mensuel de 15 000 DH :",
+                ],
+                list: [
+                    "Étape 1 — Salaire brut annuel : 15 000 × 12 = 180 000 DH.",
+                    "Étape 2 — Abattement professionnel : 35% du salaire brut annuel, plafonné à 35 000 DH. Ici 35% de 180 000 = 63 000 DH, plafonné à 35 000 DH.",
+                    "Étape 3 — Salaire net imposable : 180 000 − 35 000 = 145 000 DH.",
+                    "Étape 4 — Calcul de l'IR par tranches sur 145 000 DH.",
+                    "Étape 5 — Déductions familiales : 360 DH par personne à charge (conjoint + enfants), plafonné à 6 personnes.",
+                ],
+            },
+            {
+                heading: "Les Déductions et Exonérations",
+                paragraphs: [
+                    "Plusieurs déductions réduisent votre revenu imposable et donc votre impôt :",
+                ],
+                list: [
+                    "Abattement professionnel de 35% sur les salaires, plafonné à 35 000 DH par an.",
+                    "Déductions familiales de 360 DH par personne à charge, limitées à 6 personnes (soit 2 160 DH maximum).",
+                    "Cotisations sociales (CNSS, CNOPS, AMO) déductibles du revenu brut.",
+                    "Frais de déplacement et de formation professionnelle dans certaines limites.",
+                ],
+            },
+            {
+                heading: "IR pour les Travailleurs Indépendants et Auto-entrepreneurs",
+                paragraphs: [
+                    "Les indépendants et auto-entrepreneurs sont imposés selon un barème spécifique basé sur le chiffre d'affaires. Le régime de l'auto-entrepreneur propose un impôt mensuel simplifié selon l'activité.",
+                    "Il est fortement recommandé de consulter un expert-comptable pour optimiser votre situation fiscale et respecter les obligations de la Direction Générale des Impôts (DGI).",
+                ],
+                toolCta: {
+                    slug: "income-tax-calculator",
+                    text: "Calculez votre Impôt sur le Revenu au Maroc gratuitement avec notre calculateur IR",
+                },
+            },
+            {
+                heading: "Questions Fréquentes sur l'IR au Maroc",
+                faq: [
+                    {
+                        question: "Quel est le taux de l'Impôt sur le Revenu au Maroc ?",
+                        answer: "Le barème progressif de l'IR au Maroc va de 0% (revenus jusqu'à 40 000 DH) à 38% (revenus au-delà de 180 000 DH), avec des taux intermédiaires de 10%, 20%, 30% et 34%.",
+                    },
+                    {
+                        question: "Comment calculer le salaire net imposable ?",
+                        answer: "Soustraiez l'abattement professionnel (35% plafonné à 35 000 DH) et les cotisations sociales du salaire brut annuel pour obtenir le revenu net imposable.",
+                    },
+                    {
+                        question: "Quelle est la déduction pour charge de famille au Maroc ?",
+                        answer: "La déduction est de 360 DH par personne à charge (conjoint et enfants), plafonnée à 6 personnes, soit un maximum de 2 160 DH par an.",
+                    },
+                ],
+            },
+        ],
+    },
+    {
+        slug: "convertir-dirham-euro-dollar",
+        title: "Convertir le Dirham en Euro, Dollar et Autres Devises",
+        description:
+            "Convertissez facilement le dirham marocain (MAD) en euro, dollar américain et autres devises. Taux de change, méthode de calcul et convertisseur en ligne gratuit.",
+        date: "2025-10-28",
+        readTime: "5 min read",
+        category: "Calculators",
+        icon: "💱",
+        tags: ["convertir dirham", "dirham euro", "mad usd", "taux de change maroc", "change devises", "convertisseur mad"],
+        seo: {
+            title: "Convertir le Dirham (MAD) en Euro, Dollar & Devises (2025)",
+            description:
+                "Convertissez le dirham marocain en euro, dollar, et plus de 30 devises. Taux de change actualisés, méthode de calcul expliquée et convertisseur MAD gratuit en ligne.",
+        },
+        sections: [
+            {
+                heading: "Le Dirham Marocain (MAD) : Tout ce qu'il Faut Savoir",
+                paragraphs: [
+                    "Le dirham marocain (MAD) est la monnaie officielle du Maroc, divisée en 100 centimes. Depuis 2018, sa valeur est déterminée par un régime de change semi-flexible, où la banque centrale (Bank Al-Maghrib) intervient pour maintenir sa stabilité face au panier euro-dollar.",
+                    "Que vous voyagiez, fassiez des achats en ligne, ou travailliez avec des clients étrangers, savoir convertir le dirham en euro et en dollar est indispensable.",
+                ],
+            },
+            {
+                heading: "Convertir le Dirham en Euro (MAD → EUR)",
+                paragraphs: [
+                    "Pour convertir des dirhams en euros, divisez le montant par le taux de change. Par exemple, si 1 euro = 10,80 DH, alors 1 000 DH = 1 000 ÷ 10,80 = 92,59 €.",
+                    "Le taux de change euro-dirham varie légèrement chaque jour. Pour un voyage, comptez environ 10,50 à 11 DH pour 1 euro selon les bureaux de change.",
+                ],
+            },
+            {
+                heading: "Convertir le Dirham en Dollar (MAD → USD)",
+                paragraphs: [
+                    "Pour convertir des dirhams en dollars américains, divisez par le taux de change dollar-dirham. Si 1 dollar = 9,90 DH, alors 2 000 DH = 2 000 ÷ 9,90 = 202,02 $.",
+                    "Le dollar est souvent plus faible que le dirham, donc vous obtiendrez moins de dollars que de dirhams pour un même montant.",
+                ],
+            },
+            {
+                heading: "Méthode de Conversion : Comment Calculer",
+                paragraphs: [
+                    "La conversion suit une règle simple. Pour convertir d'une devise étrangère vers le dirham, multipliez. Pour convertir le dirham vers une devise étrangère, divisez.",
+                ],
+                list: [
+                    "Devise étrangère → MAD : montant × taux = résultats en dirhams.",
+                    "MAD → devise étrangère : montant ÷ taux = résultats en devise.",
+                    "Toujours vérifier le taux du jour car il change quotidiennement.",
+                    "Les banques et bureaux de change appliquent une marge (spread) sur le taux officiel.",
+                ],
+            },
+            {
+                heading: "Convertisseur de Devises en Ligne Gratuit",
+                paragraphs: [
+                    "Pour éviter les calculs manuels et les erreurs, utilisez un convertisseur de devises en ligne. Notre outil gratuit vous permet de convertir le dirham en euro, dollar et plus de 30 devises instantanément, directement dans votre navigateur.",
+                ],
+                toolCta: {
+                    slug: "currency-converter",
+                    text: "Convertissez le dirham en euro, dollar et autres devises gratuitement",
+                },
+            },
+            {
+                heading: "Questions Fréquentes sur la Conversion du Dirham",
+                faq: [
+                    {
+                        question: "Quel est le taux du dirham par rapport à l'euro ?",
+                        answer: "Le taux varie quotidiennement, mais il se situe généralement entre 10,50 et 11 DH pour 1 euro. Consultez un convertisseur en ligne pour le taux du jour.",
+                    },
+                    {
+                        question: "Combien vaut 1 dollar en dirham ?",
+                        answer: "1 dollar américain vaut environ 9,80 à 10 DH selon le taux du jour. Le taux fluctue en fonction du marché des changes.",
+                    },
+                    {
+                        question: "Où changer mes devises au Maroc ?",
+                        answer: "Vous pouvez changer dans les banques, les bureaux de change agréés, et les aéroports. Les taux varient, il est conseillé de comparer avant de changer.",
+                    },
+                ],
+            },
+        ],
+    },
     {
         slug: "vat-rate-morocco-guide",
         title: "VAT Rates in Morocco: The Complete Guide for 2025",

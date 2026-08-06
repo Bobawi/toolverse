@@ -8,11 +8,14 @@ import ToolFAQ from "@/components/tool-layout/ToolFAQ";
 import ToolFeatures from "@/components/tool-layout/ToolFeatures";
 import ToolHowToUse from "@/components/tool-layout/ToolHowToUse";
 import ToolRelatedTools from "@/components/tool-layout/ToolRelatedTools";
+import AdSlot from "@/components/ads/AdSlot";
 import { SITE_URL } from "@/lib/site";
 
 function ToolJsonLd({ tool }: { tool: (typeof tools)[number] }) {
     const toolUrl = `${SITE_URL}/tools/${tool.slug}`;
-    const jsonLd = {
+
+    // WebApplication schema for the tool itself
+    const webAppJsonLd = {
         "@context": "https://schema.org",
         "@type": "WebApplication",
         name: tool.name,
@@ -31,11 +34,38 @@ function ToolJsonLd({ tool }: { tool: (typeof tools)[number] }) {
             ratingCount: "120",
         },
     };
+
+    // FAQPage schema based on the tool's FAQ data (if present)
+    const faqList = tool.faq ?? [];
+    const faqJsonLd =
+        faqList.length > 0
+            ? {
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                mainEntity: faqList.map((f) => ({
+                    "@type": "Question",
+                    name: f.question,
+                    acceptedAnswer: {
+                        "@type": "Answer",
+                        text: f.answer,
+                    },
+                })),
+            }
+            : null;
+
     return (
-        <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
+        <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(webAppJsonLd) }}
+            />
+            {faqJsonLd && (
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+                />
+            )}
+        </>
     );
 }
 
@@ -94,6 +124,7 @@ const toolComponents: Record<string, React.ComponentType> = {
     "countdown-timer": dynamic(() => import("./countdown-timer")),
     "currency-converter": dynamic(() => import("./currency-converter")),
     "calculator": dynamic(() => import("./calculator")),
+    "income-tax-calculator": dynamic(() => import("./income-tax-calculator")),
 };
 
 export function generateStaticParams() {
@@ -170,13 +201,16 @@ export default function ToolPage({
                 icon={tool.icon}
                 bgColor={tool.bgColor}
             >
-                {ToolComponent ? (
+{ToolComponent ? (
                     <ToolComponent />
                 ) : (
                     <div className="py-12 text-center">
                         <p className="text-lg text-muted">{`This tool is coming soon...`}</p>
                     </div>
                 )}
+
+                {/* AdSense (inactive until enabled in env) */}
+                <AdSlot className="my-6" />
 
                 <ToolHowToUse tool={tool} />
                 <ToolFeatures tool={tool} />

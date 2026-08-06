@@ -865,7 +865,7 @@ export const tools: Tool[] = [
         faq: [
             { question: "How do I calculate a percentage of a number?", answer: "Multiply the number by the percentage divided by 100. For example, 15% of 200 = (15/100) × 200 = 30. Our calculator does this instantly." },
             { question: "How is percentage change calculated?", answer: "Percentage change = (New Value - Old Value) / Old Value × 100. A positive result means an increase, negative means a decrease." },
-{ question: "What is X as a percentage of Y?", answer: "Divide X by Y and multiply by 100. For example, 30 is 15% of 200. Our tool computes this automatically." },
+            { question: "What is X as a percentage of Y?", answer: "Divide X by Y and multiply by 100. For example, 30 is 15% of 200. Our tool computes this automatically." },
             { question: "Can I calculate percentage increase or decrease?", answer: "Yes, use the 'percentage change' mode. Enter the original and new values to see the exact increase or decrease as a percentage, with a clear sign indicating direction." },
             { question: "Is my calculation stored or shared?", answer: "No. All percentage calculations are performed locally in your browser. Your numbers are never stored, uploaded, or shared with any server." },
         ],
@@ -898,7 +898,7 @@ export const tools: Tool[] = [
         faq: [
             { question: "How do I add VAT to a price?", answer: "To add VAT, multiply the net price by (1 + VAT rate). For example, at 20% VAT: net price × 1.20 = gross price. The calculator does this for you." },
             { question: "How do I remove VAT from a price?", answer: "To remove VAT, divide the gross price by (1 + VAT rate). For example, at 20% VAT: gross price ÷ 1.20 = net price." },
-{ question: "What VAT rates are supported?", answer: "You can use the preset rates (5%, 10%, 13%, 20%, 27%) or enter any custom VAT rate you need." },
+            { question: "What VAT rates are supported?", answer: "You can use the preset rates (5%, 10%, 13%, 20%, 27%) or enter any custom VAT rate you need." },
             { question: "What is the difference between net and gross price?", answer: "The net price is the amount before VAT is added, while the gross price is the total including VAT. Use 'Add VAT' to get the gross price from a net amount, or 'Remove VAT' to find the net price from a gross amount." },
             { question: "Is my calculation stored or shared?", answer: "No. All VAT calculations are performed locally in your browser. Your amounts and rates are never stored, uploaded, or shared with any server." },
         ],
@@ -932,7 +932,7 @@ export const tools: Tool[] = [
         faq: [
             { question: "How do I resize an image without distortion?", answer: "Enable the aspect ratio lock feature. The tool will automatically maintain the original width-to-height ratio so your image never looks stretched." },
             { question: "What social media presets are available?", answer: "Presets include Instagram (1080x1080), Twitter header (1500x500), YouTube thumbnail (1280x720), LinkedIn, and more." },
-{ question: "Does resizing reduce quality?", answer: "Our resizer uses high-quality canvas interpolation. You can choose the output format (JPEG, PNG, WebP) and quality to balance file size and sharpness." },
+            { question: "Does resizing reduce quality?", answer: "Our resizer uses high-quality canvas interpolation. You can choose the output format (JPEG, PNG, WebP) and quality to balance file size and sharpness." },
             { question: "What output formats are supported?", answer: "You can download your resized image as JPEG, PNG, or WebP, and adjust the quality to control file size and sharpness." },
             { question: "Are my images uploaded to a server?", answer: "No. All resizing happens locally in your browser using the Canvas API. Your images never leave your device." },
         ],
@@ -966,7 +966,7 @@ export const tools: Tool[] = [
         faq: [
             { question: "What aspect ratios can I use?", answer: "You can crop free-form or choose from popular presets: 1:1 (square), 4:3, 16:9 (widescreen), 3:4 (portrait), and 9:16 (story/reel)." },
             { question: "Can I adjust the crop area?", answer: "Yes, drag the crop box to reposition and use the handles to resize. The preview updates in real-time." },
-{ question: "What formats are supported for download?", answer: "You can download the cropped image as JPEG, PNG, or WebP to fit your needs." },
+            { question: "What formats are supported for download?", answer: "You can download the cropped image as JPEG, PNG, or WebP to fit your needs." },
             { question: "Is my image uploaded to a server?", answer: "No. All cropping happens locally in your browser using the Canvas API. Your images never leave your device." },
             { question: "Can I crop without losing quality?", answer: "Yes. For PNG output, cropping is lossless since it only removes pixels. For JPEG or WebP, you can adjust the quality slider to keep the visual quality high." },
         ],
@@ -1000,7 +1000,7 @@ export const tools: Tool[] = [
         faq: [
             { question: "Why convert JPG to PNG?", answer: "PNG supports transparency and lossless compression, making it ideal for logos, graphics, and images that need to be edited or displayed on different backgrounds." },
             { question: "Is the conversion quality lossless?", answer: "Yes. PNG uses lossless compression, so the converted image retains all the quality of the original with no artifacts or degradation." },
-{ question: "Are my images uploaded to a server?", answer: "No. All conversion happens locally in your browser using the Canvas API. Your images never leave your device." },
+            { question: "Are my images uploaded to a server?", answer: "No. All conversion happens locally in your browser using the Canvas API. Your images never leave your device." },
             { question: "Can I convert multiple images at once?", answer: "Yes, you can convert multiple JPG images to PNG. Each image is processed independently and you can download them one by one, or all together." },
             { question: "Will the PNG file be larger than the JPG?", answer: "Usually yes, PNG files are larger than JPG files because PNG uses lossless compression. This is the trade-off for having transparent backgrounds and no quality loss." },
         ],
@@ -1034,7 +1034,7 @@ export const tools: Tool[] = [
         faq: [
             { question: "Why convert PNG to JPG?", answer: "JPG files are significantly smaller than PNG files, making them ideal for photographs and web images where file size matters for page load speed." },
             { question: "Will the image lose quality?", answer: "JPG is a lossy format. You can adjust the quality slider (1-100%) to balance between file size and visual quality. At 90%+ quality, the difference is usually imperceptible." },
-{ question: "What happens to transparency?", answer: "JPG doesn't support transparency. Transparent areas are automatically filled with a white background during conversion." },
+            { question: "What happens to transparency?", answer: "JPG doesn't support transparency. Transparent areas are automatically filled with a white background during conversion." },
             { question: "Can I convert multiple PNG images at once?", answer: "Yes, you can convert multiple PNG images to JPG. Each image is processed locally and you can download them individually or all at once." },
             { question: "Is my image uploaded to a server?", answer: "No. All conversion happens locally in your browser using the Canvas API. Your images never leave your device." },
         ],
@@ -1068,7 +1068,7 @@ export const tools: Tool[] = [
         faq: [
             { question: "What is WebP?", answer: "WebP is a modern image format developed by Google that provides superior compression (30-50% smaller) compared to JPG and PNG while maintaining high quality." },
             { question: "Is WebP supported by all browsers?", answer: "WebP is supported by all modern browsers including Chrome, Firefox, Safari, and Edge. For older browsers, you may need to provide fallback images." },
-{ question: "Does WebP support transparency?", answer: "Yes, WebP supports transparency (alpha channel) just like PNG, making it an excellent replacement for PNG with much smaller file sizes." },
+            { question: "Does WebP support transparency?", answer: "Yes, WebP supports transparency (alpha channel) just like PNG, making it an excellent replacement for PNG with much smaller file sizes." },
             { question: "Can I convert multiple PNG images at once?", answer: "Yes, you can convert multiple PNG images to WebP. Each image is processed locally and you can download them individually or all together." },
             { question: "Is my image uploaded to a server?", answer: "No. All conversion happens locally in your browser using the Canvas API. Your images never leave your device." },
         ],
@@ -1102,7 +1102,7 @@ export const tools: Tool[] = [
         faq: [
             { question: "Why convert JPG to WebP?", answer: "WebP offers 25-50% smaller file sizes than JPG at equivalent quality, making your website load faster and improving SEO performance." },
             { question: "Is WebP supported everywhere?", answer: "WebP is supported by all modern browsers (Chrome, Firefox, Safari, Edge). For legacy browsers you should provide JPG fallbacks." },
-{ question: "Can I control the quality?", answer: "Yes, use the quality slider to find the perfect balance between file size and visual quality for your use case." },
+            { question: "Can I control the quality?", answer: "Yes, use the quality slider to find the perfect balance between file size and visual quality for your use case." },
             { question: "Can I convert multiple JPG images at once?", answer: "Yes, you can convert multiple JPG images to WebP. Each image is processed locally and you can download them individually or all together." },
             { question: "Is my image uploaded to a server?", answer: "No. All conversion happens locally in your browser using the Canvas API. Your images never leave your device." },
         ],
@@ -1136,7 +1136,7 @@ export const tools: Tool[] = [
         faq: [
             { question: "Why convert WebP to PNG?", answer: "PNG is widely supported in older software, editors, and platforms that don't handle WebP. PNG also offers lossless quality for editing." },
             { question: "Is the conversion lossless?", answer: "Yes, PNG uses lossless compression so the converted image retains full quality from the original WebP." },
-{ question: "Does PNG support transparency?", answer: "Yes, PNG fully supports transparency (alpha channel), preserving any transparent areas from the original WebP image." },
+            { question: "Does PNG support transparency?", answer: "Yes, PNG fully supports transparency (alpha channel), preserving any transparent areas from the original WebP image." },
             { question: "Can I convert WebP to PNG in bulk?", answer: "Yes, you can upload multiple WebP images and convert them all to PNG in one go. Each image is processed instantly and downloaded as a separate high-quality PNG file." },
             { question: "Is this tool free to use?", answer: "Yes, ToolVerse's WebP to PNG converter is completely free with no sign-up, no watermarks, and no usage limits." },
         ],
@@ -1170,7 +1170,7 @@ export const tools: Tool[] = [
         faq: [
             { question: "Why convert WebP to JPG?", answer: "JPG is compatible with virtually all platforms and software. Converting WebP to JPG ensures your images work everywhere." },
             { question: "Will the quality change?", answer: "JPG is a lossy format, but you can adjust the quality slider to maintain high visual fidelity at 90%+ quality." },
-{ question: "What about transparency?", answer: "JPG doesn't support transparency, so transparent areas are filled with white background during conversion." },
+            { question: "What about transparency?", answer: "JPG doesn't support transparency, so transparent areas are filled with white background during conversion." },
             { question: "Why would I convert WebP to JPG?", answer: "JPG is still the most widely supported image format for email, social media, and legacy software. Converting ensures your images display correctly everywhere." },
             { question: "How much can I reduce the file size?", answer: "You can significantly reduce file size by adjusting the quality slider. Lower quality values produce smaller files, making it ideal for web and email use." },
         ],
@@ -1204,7 +1204,7 @@ export const tools: Tool[] = [
         faq: [
             { question: "Can I rotate by any angle?", answer: "Currently the tool supports 90°, 180°, and 270° rotations. For fine-tuned rotation, we recommend using an advanced editor." },
             { question: "Will rotation reduce quality?", answer: "No, rotation at 90°/180°/270° is lossless for PNG. If you choose JPEG output, quality depends on the quality slider setting." },
-{ question: "What formats can I download?", answer: "You can download the rotated image as PNG, JPEG, or WebP to fit your needs." },
+            { question: "What formats can I download?", answer: "You can download the rotated image as PNG, JPEG, or WebP to fit your needs." },
             { question: "Will rotating change my image dimensions?", answer: "Yes, rotating by 90° or 270° swaps the width and height of your image. A 180° rotation keeps the original dimensions while flipping the orientation." },
             { question: "Is my image uploaded to a server?", answer: "No. All rotation happens locally in your browser using the Canvas API. Your images never leave your device." },
         ],
@@ -1238,7 +1238,7 @@ export const tools: Tool[] = [
         faq: [
             { question: "What is the difference between flip and rotate?", answer: "Flipping mirrors the image (like a reflection), while rotating turns it. Horizontal flip = mirror left-right, vertical flip = mirror top-bottom." },
             { question: "Can I flip both directions at once?", answer: "Yes, the 'Both' option flips the image horizontally and vertically at the same time, creating a 180° mirror effect." },
-{ question: "Is flipping lossless?", answer: "Yes, flipping preserves all pixel data. For PNG output the result is completely lossless." },
+            { question: "Is flipping lossless?", answer: "Yes, flipping preserves all pixel data. For PNG output the result is completely lossless." },
             { question: "When would I need to flip an image?", answer: "Flipping is useful for correcting mirrored scans, adjusting photos taken in a mirror, creating symmetrical designs, or preparing images for print transfers." },
             { question: "Can I flip a video or GIF?", answer: "Currently this tool only supports still images (PNG, JPG, WebP). Video and animated GIF flipping is not supported yet." },
         ],
@@ -1272,7 +1272,7 @@ export const tools: Tool[] = [
         faq: [
             { question: "What is Base64 image encoding?", answer: "Base64 encoding converts binary image data into a text string that can be embedded directly into HTML, CSS, or JSON without needing a separate file." },
             { question: "When should I use image to Base64?", answer: "It's useful for small images like icons and logos where you want to reduce HTTP requests, or for storing images in databases that only support text." },
-{ question: "Does Base64 increase file size?", answer: "Yes, Base64 encoding increases the size by about 33%. It's best used for small images (under 10KB) to avoid bloating your HTML/CSS files." },
+            { question: "Does Base64 increase file size?", answer: "Yes, Base64 encoding increases the size by about 33%. It's best used for small images (under 10KB) to avoid bloating your HTML/CSS files." },
             { question: "Are my images uploaded to a server?", answer: "No. All image-to-Base64 conversion happens locally in your browser. Your images never leave your device." },
             { question: "Can I convert SVG images to Base64?", answer: "Yes, SVG images are supported. The tool will encode the SVG file content to a Base64 string, which can be embedded in HTML or CSS as a data URI." },
         ],
@@ -1305,7 +1305,7 @@ export const tools: Tool[] = [
         faq: [
             { question: "What is URL encoding?", answer: "URL encoding converts special characters into a format that can be safely transmitted in URLs. For example, spaces become %20 and & becomes %26." },
             { question: "When do I need URL encoding?", answer: "URL encoding is needed when passing special characters in query strings, form data, or any URL that contains characters like spaces, &, ?, #, etc." },
-{ question: "Is this tool free?", answer: "Yes, completely free with no sign-up or usage limits." },
+            { question: "Is this tool free?", answer: "Yes, completely free with no sign-up or usage limits." },
             { question: "Is my data sent to a server?", answer: "No. All URL encoding and decoding happens locally in your browser. Your text never leaves your device." },
             { question: "What is the difference between encodeURIComponent and encodeURI?", answer: "encodeURIComponent encodes characters that are not safe in a query string component, including &, ?, and #, while encodeURI preserves those reserved characters. This tool uses encodeURIComponent-style encoding for maximum safety." },
         ],
@@ -1338,7 +1338,7 @@ export const tools: Tool[] = [
         faq: [
             { question: "What is a JWT token?", answer: "JWT (JSON Web Token) is a compact, URL-safe token format used for authentication and authorization. It consists of a header, payload, and signature." },
             { question: "Does this tool verify the signature?", answer: "No, this tool only decodes the Base64-encoded header and payload. It does not verify the signature. Always verify JWTs server-side." },
-{ question: "Is my JWT data sent to a server?", answer: "No, all decoding happens locally in your browser. Your JWT token never leaves your device." },
+            { question: "Is my JWT data sent to a server?", answer: "No, all decoding happens locally in your browser. Your JWT token never leaves your device." },
             { question: "What is the difference between JWT header and payload?", answer: "The header contains metadata about the token, such as the signing algorithm (e.g. HS256) and token type. The payload contains the claims, which are the actual data like the user ID, expiry, and permissions." },
             { question: "What is the signature part of a JWT?", answer: "The signature is the third part of a JWT, created by hashing the encoded header and payload with a secret key. It is used to verify the token's authenticity and is not decoded by this tool - it must be verified with the secret." },
         ],
@@ -1372,11 +1372,11 @@ export const tools: Tool[] = [
         faq: [
             { question: "What makes a password strong?", answer: "A strong password is at least 12 characters long, includes uppercase and lowercase letters, numbers, and symbols. Avoid common words and personal information." },
             { question: "Is my password sent to a server?", answer: "No, all password analysis happens locally in your browser. Your password never leaves your device." },
-{ question: "What is a good password strength score?", answer: "A score of 4/6 or higher is recommended. This means your password is at least 12 characters, uses mixed case, and includes numbers or symbols." },
+            { question: "What is a good password strength score?", answer: "A score of 4/6 or higher is recommended. This means your password is at least 12 characters, uses mixed case, and includes numbers or symbols." },
             { question: "How can I make my password stronger?", answer: "Increase its length, add a mix of uppercase and lowercase letters, include numbers and special symbols, and avoid predictable words, names, or sequences. Using a passphrase of random words is also very effective." },
             { question: "Does the checker detect common passwords?", answer: "Yes, the tool flags common and easily guessable passwords, repeated characters, and common patterns like '123456' or 'password', so you know to avoid them." },
         ],
-howToUse: [
+        howToUse: [
             { step: 1, title: "Enter your password", description: "Type the password you want to check in the input field." },
             { step: 2, title: "View real-time analysis", description: "See the strength score, label, and checklist update instantly as you type." },
             { step: 3, title: "Improve your password", description: "Use the checklist to identify what's missing and make your password stronger." },
@@ -1604,7 +1604,7 @@ howToUse: [
             "Free & unlimited",
             "No sign-up required",
         ],
-category: "calculators",
+        category: "calculators",
         icon: "⏱️",
         color: "text-cyan-500",
         bgColor: "bg-cyan-500/10",
@@ -1639,7 +1639,7 @@ category: "calculators",
             "Free & unlimited",
             "No sign-up required",
         ],
-category: "calculators",
+        category: "calculators",
         icon: "⏳",
         color: "text-cyan-500",
         bgColor: "bg-cyan-500/10",
@@ -1730,6 +1730,41 @@ category: "calculators",
             { step: 1, title: "Click the buttons", description: "Use the on-screen buttons to enter numbers and operators." },
             { step: 2, title: "Perform calculations", description: "Add, subtract, multiply, or divide, then press equals for the result." },
             { step: 3, title: "Clear to start over", description: "Press C to clear the calculator and start a new calculation." },
+        ],
+    },
+    {
+        slug: "income-tax-calculator",
+        name: "Morocco Income Tax Calculator (IR)",
+        description: "Calculate Moroccan income tax (IR) on your salary with the official 2024/2025 progressive scale. See your net salary after deductions.",
+        features: [
+            "Official Moroccan IR progressive scale (0% to 44%)",
+            "35% professional expenses deduction (capped at 35,000 DH)",
+            "Family deductions for spouse & children (360 DH each)",
+            "Social solidarity contribution (CSS) 2% included",
+            "Monthly & annual net salary results",
+            "Free, private & works in your browser",
+        ],
+        category: "calculators",
+        icon: "🏛️",
+        color: "text-amber-500",
+        bgColor: "bg-amber-500/10",
+        popular: true,
+        badge: "new",
+        seo: {
+            title: "Free Morocco Income Tax Calculator (IR) 2024/2025 - Net Salary",
+            description: "Calculate your Moroccan income tax (IR) and net salary with the official 2024/2025 progressive scale. Includes professional expenses, family deductions, and CSS. Free online tool.",
+        },
+        faq: [
+            { question: "How is Moroccan income tax (IR) calculated?", answer: "IR is calculated using a progressive scale on your annual net taxable income. First, a 35% professional expenses deduction is applied (capped at 35,000 DH), then family deductions of 360 DH per dependent, and finally the progressive brackets from 0% to 44% are applied." },
+            { question: "What are the 2024/2025 IR brackets in Morocco?", answer: "The progressive scale is: 0% up to 30,000 DH, 10% from 30,001-50,000, 20% from 50,001-60,000, 30% from 60,001-80,000, 34% from 80,001-180,000, 38% from 180,001-240,000, 40% from 240,001-360,000, 42% from 360,001-600,000, and 44% above 600,000 DH." },
+            { question: "What is the social solidarity contribution (CSS)?", answer: "The CSS is a 2% contribution applied to gross annual income above 120,000 DH. It was introduced to fund social programs and is deducted alongside income tax." },
+            { question: "How much is the family deduction?", answer: "You get a deduction of 360 DH per year for each dependent (spouse and children), up to a maximum of 6 dependents. This is deducted from your taxable income before applying the progressive brackets." },
+            { question: "Is this calculator accurate?", answer: "This calculator follows the official Moroccan General Tax Code (CGI) 2024/2025 rules for salaried employees. It provides an accurate estimate, but your exact tax may vary based on other deductions, exemptions, or specific situations. Always consult a tax professional for official advice." },
+        ],
+        howToUse: [
+            { step: 1, title: "Enter your salary", description: "Type your gross monthly salary in Moroccan Dirhams (MAD)." },
+            { step: 2, title: "Add dependents", description: "Enter the number of dependents (spouse + children) for the family deduction." },
+            { step: 3, title: "Calculate", description: "Click Calculate to see your monthly IR, CSS, and net salary after all deductions." },
         ],
     },
 ];

@@ -2056,10 +2056,56 @@ export const toolTranslations: Record<string, ToolTranslation> = {
             { question: "Que peut faire cette calculatrice ?", answer: "Elle gère l'addition, la soustraction, la multiplication, la division et le pourcentage." },
             { question: "Fonctionne-t-elle sur mobile ?", answer: "Oui, entièrement responsive." },
         ],
-        howToUseFr: [
+howToUseFr: [
             { title: "Appuyez sur les touches", description: "Utilisez les touches pour saisir les nombres et les opérations." },
             { title: "Effectuez les calculs", description: "Additionnez, soustrayez, multipliez et divisez." },
             { title: "Effacez pour recommencer", description: "Appuyez sur C pour effacer." },
+        ],
+    },
+    "income-tax-calculator": {
+        name: "حاسبة ضريبة الدخل المغربية (IR)",
+        description: "احسب ضريبة الدخل المغربية (IR) على راتبك باستخدام السلم التصاعدي الرسمي 2024/2025. شاهد صافي راتبك بعد الخصومات.",
+        features: [
+            "السلم التصاعدي الرسمي لضريبة الدخل المغربية (من 0% إلى 44%)",
+            "خصم المصاريف المهنية 35% (بحد أقصى 35,000 درهم)",
+            "خصومات عائلية للزوج والأبناء (360 درهم لكل فرد)",
+            "المساهمة الاجتماعية للتضامن (CSS) 2% مضمنة",
+            "نتائج صافي الراتب الشهري والسنوي",
+            "مجاني وخاص ويعمل في متصفحك",
+        ],
+        faq: [
+            { question: "كيف تُحسب ضريبة الدخل المغربية (IR)؟", answer: "تحسب ضريبة الدخل باستخدام السلم التصاعدي على الدخل الخاضع للضريبة السنوي. أولاً، يُطبق خصم المصاريف المهنية 35% (بحد أقصى 35,000 درهم)، ثم الخصومات العائلية 360 درهم لكل فرد، وأخيراً تُطبق الشرائح التصاعدية من 0% إلى 44%." },
+            { question: "ما هي شرائح ضريبة الدخل 2024/2025 في المغرب؟", answer: "السلم التصاعدي هو: 0% حتى 30,000 درهم، 10% من 30,001 إلى 50,000، 20% من 50,001 إلى 60,000، 30% من 60,001 إلى 80,000، 34% من 80,001 إلى 180,000، 38% من 180,001 إلى 240,000، 40% من 240,001 إلى 360,000، 42% من 360,001 إلى 600,000، و44% فوق 600,000 درهم." },
+            { question: "ما هي المساهمة الاجتماعية للتضامن (CSS)؟", answer: "المساهمة الاجتماعية للتضامن هي مساهمة بنسبة 2% تُطبق على الدخل الإجمالي السنوي الذي يتجاوز 120,000 درهم. أُحدثت لتمويل البرامج الاجتماعية وتُخصم بجانب ضريبة الدخل." },
+            { question: "كم يبلغ الخصم العائلي؟", answer: "تحصل على خصم 360 درهم في السنة لكل معال (الزوج والأبناء)، بحد أقصى 6 معالين. يُخصم هذا من دخلك الخاضع للضريبة قبل تطبيق الشرائح التصاعدية." },
+            { question: "هل هذه الحاسبة دقيقة؟", answer: "تتبع هذه الحاسبة قواعد المدونة العامة للضرائب (CGI) المغربية 2024/2025 للموظفين. توفر تقديراً دقيقاً، لكن ضرائبك الفعلية قد تختلف حسب خصومات أو إعفاءات أو حالات خاصة أخرى. استشر دائماً مستشاراً ضريبياً للحصول على المشورة الرسمية." },
+        ],
+        howToUse: [
+            { title: "أدخل راتبك", description: "اكتب راتبك الشهري الإجمالي بالدرهم المغربي." },
+            { title: "أضف المعالين", description: "أدخل عدد المعالين (الزوج والأبناء) للخصم العائلي." },
+            { title: "احسب", description: "اضغط احسب لرؤية ضريبة الدخل الشهرية وCSS وصافي الراتب بعد كل الخصومات." },
+        ],
+        nameFr: "Calculateur d'impôt sur le revenu (IR) Maroc",
+        descriptionFr: "Calculez l'impôt sur le revenu (IR) marocain sur votre salaire avec le barème progressif officiel 2024/2025. Voyez votre salaire net après déductions.",
+        featuresFr: [
+            "Barème progressif officiel de l'IR marocain (0% à 44%)",
+            "Déduction des frais professionnels 35% (plafonnée à 35 000 DH)",
+            "Déductions familiales pour conjoint et enfants (360 DH chacun)",
+            "Contribution sociale de solidarité (CSS) 2% incluse",
+            "Résultats du salaire net mensuel et annuel",
+            "Gratuit, privé et fonctionne dans votre navigateur",
+        ],
+        faqFr: [
+            { question: "Comment l'impôt sur le revenu (IR) marocain est-il calculé ?", answer: "L'IR est calculé selon un barème progressif sur le revenu net imposable annuel. D'abord, une déduction des frais professionnels de 35% est appliquée (plafonnée à 35 000 DH), puis les déductions familiales de 360 DH par personne à charge, et enfin les tranches progressives de 0% à 44% sont appliquées." },
+            { question: "Quelles sont les tranches d'IR 2024/2025 au Maroc ?", answer: "Le barème progressif est : 0% jusqu'à 30 000 DH, 10% de 30 001 à 50 000, 20% de 50 001 à 60 000, 30% de 60 001 à 80 000, 34% de 80 001 à 180 000, 38% de 180 001 à 240 000, 40% de 240 001 à 360 000, 42% de 360 001 à 600 000, et 44% au-dessus de 600 000 DH." },
+            { question: "Qu'est-ce que la contribution sociale de solidarité (CSS) ?", answer: "La CSS est une contribution de 2% appliquée au revenu annuel brut supérieur à 120 000 DH. Elle a été introduite pour financer des programmes sociaux et est prélevée en plus de l'impôt sur le revenu." },
+            { question: "Quel est le montant de la déduction familiale ?", answer: "Vous bénéficiez d'une déduction de 360 DH par an pour chaque personne à charge (conjoint et enfants), jusqu'à un maximum de 6 personnes. Ce montant est déduit de votre revenu imposable avant d'appliquer le barème progressif." },
+            { question: "Cette calculatrice est-elle précise ?", answer: "Cette calculatrice suit les règles officielles du Code Général des Impôts (CGI) 2024/2025 pour les salariés. Elle fournit une estimation précise, mais votre impôt exact peut varier selon d'autres déductions, exonérations ou situations particulières. Consultez toujours un professionnel pour un avis officiel." },
+        ],
+        howToUseFr: [
+            { title: "Entrez votre salaire", description: "Saisissez votre salaire mensuel brut en dirhams marocains (MAD)." },
+            { title: "Ajoutez les personnes à charge", description: "Entrez le nombre de personnes à charge (conjoint + enfants) pour la déduction familiale." },
+            { title: "Calculer", description: "Cliquez sur Calculer pour voir votre IR mensuel, la CSS et le salaire net après toutes déductions." },
         ],
     },
 };
