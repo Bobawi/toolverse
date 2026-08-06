@@ -11,9 +11,9 @@
 - [x] Ensure internal links to tools in each post
 
 ## SEO / Metadata Optimization
-- [ ] Improve tool page metadata with Moroccan keywords
+- [x] Improve tool page metadata with Moroccan keywords (income-tax + currency tools)
 - [x] Verify hreflang EN/FR/AR in layout
-- [ ] Optimize homepage metadata
+- [x] Optimize homepage metadata
 
 ## Google Search Console Guide
 - [x] Create `SEO-GUIDE.md` with step-by-step GSC + AdSense instructions

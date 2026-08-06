@@ -1,11 +1,11 @@
 /**
  * Central site configuration.
- * The canonical domain is toolverse.app — used for SEO, sitemap, robots,
- * Open Graph, and canonical tags. The Vercel deployment URL
- * (toolverse-steel.vercel.app) is only for preview/shared links and is
- * *not* used anywhere in the metadata or canonical URLs.
+ * The canonical domain is the Vercel deployment URL currently in use:
+ * toolverse-steel.vercel.app. Used for SEO, sitemap, robots, Open Graph,
+ * canonical tags, and hreflang. If a custom domain is added later, update
+ * this single constant.
  */
-export const SITE_URL = "https://toolverse.app";
+export const SITE_URL = "https://toolverse-steel.vercel.app";
 
 export const SITE_NAME = "ToolVerse";
 
