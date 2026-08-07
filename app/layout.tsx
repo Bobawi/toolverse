@@ -163,6 +163,19 @@ export default function RootLayout({
           content="ca-pub-9740076187901674"
         />
 
+        {/* Google Analytics 4 (gtag.js) */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-3YK7WEL3MG" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-3YK7WEL3MG');
+            `,
+          }}
+        />
+
         {/* Preconnect for analytics — actual script loads on first interaction (AnalyticsLoader) */}
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="preconnect" href="https://www.google-analytics.com" crossOrigin="anonymous" />
