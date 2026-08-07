@@ -31,7 +31,7 @@ export default function AnalyticsLoader() {
         if (typeof window === "undefined") return;
         if (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") return;
 
-        const GA_ID = "G-Z3D2TSGYJ7";
+        const GA_ID = "G-3YK7WEL3MG";
         const CLARITY_ID = "xvu8nfhcfq";
 
         let loaded = false;
